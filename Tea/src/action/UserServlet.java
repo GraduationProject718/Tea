@@ -60,9 +60,9 @@ public class UserServlet extends HttpServlet {
 			User user = new User();
 			user.setAccount(account);
 			user.setPassword(password);
-			user.setName("");
-			user.setInfo("");
-			user.setGender("");
+			user.setName(account);
+			user.setInfo("这个人很懒，什么都没有留下-_-!!!");
+			user.setGender("男");
 			user.setBirthday("2000-01-01");
 			user.setAddress("");
 			user.setPhone("");

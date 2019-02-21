@@ -17,13 +17,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<link rel="stylesheet" href="css/page.css" />
+	<script type="text/javascript" src="js/jquery.min.js" ></script>
+	<script type="text/javascript" src="js/main.js" ></script>
 
   </head>
   
   <body>
-	
+	<div class="left">
+			<div class="bigTitle">中国茶文化后台管理系统</div>
+			<div class="lines">
+				<div onclick="pageClick(this)" class="active"><a href="admin/user/user.jsp" target="main"><img src="img/icon-1.png" />用户管理</a></div>
+				<div onclick="pageClick(this)"><a href="admin/tea/tea.jsp" target="main"><img src="img/icon-2.png" />茶叶管理</a></div>
+				<div onclick="pageClick(this)"><a href="admin/ware/ware.jsp" target="main"><img src="img/icon-2.png" />茶具管理</a></div>
+				<div onclick="pageClick(this)"><a href="admin/article/article.jsp" target="main"><img src="img/icon-3.png" />文章管理</a></div>
+				<div onclick="pageClick(this)"><a href="admin/message/message.jsp" target="main"><img src="img/icon-3.png" />留言管理</a></div>
+				<div onclick="pageClick(this)"><a href="admin/img/img.jsp" target="main"><img src="img/icon-4.png" />图片管理</a></div>
+				<div onclick="pageClick(this)"><a href="admin/video/video.jsp" target="main"><img src="img/icon-5.png" />视频管理</a></div>
+			</div>
+		</div>
+		<div class="top">
+			<div class="leftTiyle" id="flTitle">用户管理</div>
+			<div class="thisUser">当前用户：${admin.account}</div>
+		</div>
+		<div class="content">
+			<iframe src="admin/user/user.jsp" style="width:99%;height:85%;" name="main"></iframe>
+		</div>
   </body>
 </html>
