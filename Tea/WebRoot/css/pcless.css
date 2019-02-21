@@ -490,6 +490,8 @@ a:hover {
 
 .footer table.max .td3 img {
 	margin-bottom: 18px;
+	width:200px;
+	height:auto;
 }
 
 .footer table.max .copyright {

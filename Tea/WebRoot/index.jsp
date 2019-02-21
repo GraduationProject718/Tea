@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -41,13 +42,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			$("#login").click(function(){
 				var account = $("#loginAccount").val();
 				var password = $("#loginPassword").val();
-				alert(account+password);
+				$.ajax({
+						type:"POST",
+						url:"servlet/UserServlet",
+						data:{"flag":"login","account":account,"password":password},
+						success:function(data){
+							location="index.jsp";
+						}
+					});
 			});
 			$("#register").click(function(){
 				var account = $("#registerAccount").val();
 				var password1 = $("#registerPassword1").val();
 				var password2 = $("#registerPassword2").val();
-				alert(account+password1+password2);
+				if(password1 == password2){
+					$.ajax({
+						type:"POST",
+						url:"servlet/UserServlet",
+						data:{"flag":"register","account":account,"password":password1},
+						success:function(data){
+							alert(data);
+						}
+						
+					});
+				}else{
+					alert("密码不一致,请重新输入");
+					return false;
+				}
 			});
 		});
 	</script>
@@ -56,6 +77,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   <jsp:include page="header.jsp"></jsp:include>
  	<div class="p_news clearfix">
+ 	<!-- 登录注册选项卡 begin-->
+ 	<c:if test="${user.name == null}">
  	<div class="login">
  	<div class="layui-tab">
 	  <ul class="layui-tab-title">
@@ -82,6 +105,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  var element = layui.element;
 	});
 	</script>
+	</c:if>
+	<c:if test="${user.name != null}">
+		<a target="index" href="user.jsp"><img src="${user.imgUrl }"></a>
+	</c:if>
+	<!-- 登录注册选项卡 end-->
   	<div class="i_tit2 max">
 		<h2>茶资讯</h2>
 		<span>NEWS  CENTER</span>

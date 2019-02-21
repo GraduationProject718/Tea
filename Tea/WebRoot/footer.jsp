@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</table>
 			</td>
 			<td class="td3">
-				<img src="img/code.jpg" /><br /> 杨涛QQ二维码
+				<img  src="img/icon/QQ.png" /><br /> 杨涛QQ二维码
 			</td>
 		</tr>
 		<tr>
