@@ -78,8 +78,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <jsp:include page="header.jsp"></jsp:include>
  	<div class="p_news clearfix">
  	<!-- 登录注册选项卡 begin-->
- 	<c:if test="${user.name == null}">
  	<div class="login">
+ 	<c:if test="${user.name == null}">
  	<div class="layui-tab">
 	  <ul class="layui-tab-title">
 	    <li class="layui-this">登录</li>
@@ -99,16 +99,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	  </div>
 	</div>
+	</c:if>
+	<c:if test="${user.name != null}">
+		<a href="myUser.jsp" target="_self"><img style="width:100px;height:100px;float:right;" src="${user.imgUrl }"></a>
+	</c:if>
 	 </div>
 	<script>
 	layui.use('element', function(){
 	  var element = layui.element;
 	});
 	</script>
-	</c:if>
-	<c:if test="${user.name != null}">
-		<a target="index" href="user.jsp"><img src="${user.imgUrl }"></a>
-	</c:if>
+	
+	
 	<!-- 登录注册选项卡 end-->
   	<div class="i_tit2 max">
 		<h2>茶资讯</h2>

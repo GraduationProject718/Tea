@@ -10,19 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entity.User;
-import service.UserService;
+import entity.Admin;
+import service.AdminService;
 
 /**
- * Servlet implementation class User
+ * Servlet implementation class AdminServlet
  */
-public class UserServlet extends HttpServlet {
+@WebServlet("/AdminServlet")
+public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserServlet() {
+    public AdminServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,39 +40,20 @@ public class UserServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String flag = request.getParameter("flag");
-		UserService userService = new UserService();
 		PrintWriter out = response.getWriter();
+		AdminService adminService = new AdminService();
 		
 		if("login".equals(flag)) {
 			String account = request.getParameter("account");
 			String password = request.getParameter("password");
-			ArrayList<User> list = userService.getAll();
-			for(User u: list){ 
-				if(u.getAccount().equals(account) && u.getPassword().equals(password)){
-					request.getSession().setAttribute("user", u);		
-				}else{
-					out.write("您输入的账号或者密码有误，请重新输入"); 
+			ArrayList<Admin> list = adminService.getAll();
+			for(Admin a:list) {
+				if(a.getAccount().equals(account) && a.getPassword().equals(password)) {
+					request.getSession().setAttribute("admin", a);
 				}
 			}
 		}
-		if("register".equals(flag)) {
-			String account = request.getParameter("account");
-			String password = request.getParameter("password");
-			User user = new User();
-			user.setAccount(account);
-			user.setPassword(password);
-			user.setName("");
-			user.setInfo("");
-			user.setGender("");
-			user.setBirthday("2000-01-01");
-			user.setAddress("");
-			user.setPhone("");
-			user.setImgName("moren.jpg");
-			user.setImgUrl("img/moren.jpg");
-			if(userService.register(user)) {
-				out.print("注册成功，请进行登录!");
-			}
-		}
+		
 	}
 
 }
