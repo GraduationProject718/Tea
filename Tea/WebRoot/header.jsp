@@ -3,26 +3,49 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'header.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
-  </head>
-  
-  <body>
-    This is my JSP page. <br>
-  </body>
-</html>
+<div class="header">
+	<div class="logo">
+		<img style="width:125px;height:125px;background:#EDEAE3;" src="img/icon/logo.png" />
+	</div>
+	<div class="nav max">
+		<ul>
+			<li>
+				<a href="index.jsp">
+					<h2>网站首页</h2>
+					<h4>HOME</h4>
+				</a>
+			</li>
+			<li>
+				<a href="tea.jsp">
+					<h2>茶叶</h2>
+					<h4>TEA</h4>
+				</a>
+			</li>
+			<li>
+				<a href="ware.jsp">
+					<h2>茶具</h2>
+					<h4>WARE</h4>
+				</a>
+			</li>
+			<li></li>
+			<li>
+				<a href="health.jsp">
+					<h2>茶与养生</h2>
+					<h4>HEALTH</h4>
+				</a>
+			</li>
+			<li>
+				<a href="art.jsp">
+					<h2>茶艺茶道</h2>
+					<h4>ART</h4>
+				</a>
+			</li>
+			<li>
+				<a href="history.jsp">
+					<h2>茶历史</h2>
+					<h4>HISTORY</h4>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>

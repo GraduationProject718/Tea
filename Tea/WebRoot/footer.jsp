@@ -3,26 +3,66 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<link rel="stylesheet" type="text/css" href="css/pcreset.css" />
+<link rel="stylesheet" type="text/css" href="css/pcless.css" />
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'footer.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
-  </head>
-  
-  <body>
-    This is my JSP page. <br>
-  </body>
-</html>
+  <footer class="footer">
+	<table class="max" border="0" cellspacing="" cellpadding="">
+		<tr>
+			<td class="td1">
+				<table border="0" cellspacing="" cellpadding="">
+					<tr>
+						<td><img src="img/icon/footer.png" /></td>
+						<td>
+							<span class="liuyan">在线留言</span> online message
+						</td>
+					</tr>
+				</table>
+				<form action="">
+					<p><input type="text" name="" id="" value="" placeholder="您的姓名..." /></p>
+					<p><input type="tel" name="" id="" value="" placeholder="您的电话..." /></p>
+					<p><input type="email" name="" id="" value="" placeholder="您的邮箱..." /></p>
+					<div class="bot clearfix">
+						<textarea name="" rows="" cols=""></textarea>
+						<input type="submit" class="btn" value="提交" formnovalidate="formnovalidate" />
+					</div>
+				</form>
+			</td>
+			<td class="td2">
+				<table class="table1" border="0" cellspacing="" cellpadding="">
+					<tr>
+						<td class="logo"><img src="img/icon/footer-logo.png" /></td>
+						<td>
+							<div class="top">
+								<h3>站主个人资料</h3>
+							</div>
+							<div class="txt">
+								住址：湖南省XXXXXXXXXXXX<br /> QQ号码：358392229<br /> 电子邮箱：358392229@qq.com
+								<br />
+							</div>
+							<table border="0" cellspacing="" cellpadding="">
+								<tr>
+									<td><img src="img/icon/footer-tel.png" /></td>
+									<td>
+										<div class="tel">
+											咨询电话：
+											<span>18888888888</span>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td class="td3">
+				<img src="img/code.jpg" /><br /> 杨涛QQ二维码
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" class="copyright">
+				@2019  版权所有：计本1501杨涛 学号：201508110046  
+			</td>
+		</tr>
+	</table>
+</footer>
