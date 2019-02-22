@@ -26,6 +26,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div class="p_news clearfix">
    	昵称${user.name}
    </div>
+   
+   <!-- 上传视频 begin -->
+   <form action="servlet/UserServlet?flag=uploadVideo" method="post" enctype="multipart/form-data">
+   		文件名<input type="text" name="name" /><br />
+   		介绍<input type="text" name="information" /><br />
+   		<input type="file" name="video" /><br />
+   		<button>提交</button>
+   </form>
+   <!-- 上传视频 end -->
   <jsp:include page="footer.jsp"></jsp:include>
   </body>
 </html>

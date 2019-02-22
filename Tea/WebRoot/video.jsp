@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>中国茶文化后台管理系统</title>
+    <title>中国茶文化网</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <jsp:include page="../pageFile.jsp"></jsp:include>
+     <jsp:include page="header.jsp"></jsp:include>
+  <jsp:include page="footer.jsp"></jsp:include>
   </body>
 </html>

@@ -1,16 +1,30 @@
 package action;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.IOUtils;
+
+import entity.PageModel;
 import entity.User;
+import entity.Video;
 import service.UserService;
 
 /**
@@ -18,7 +32,7 @@ import service.UserService;
  */
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	String UPLOAD_DIRECTORY = "upload//video";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -72,6 +86,54 @@ public class UserServlet extends HttpServlet {
 				out.print("注册成功，请进行登录!");
 			}
 		}
+		
+		if("uploadVideo".equals(flag)) {
+			Map<String,String> map = new HashMap<String,String>();
+			Video video = new Video();
+			try {
+				DiskFileItemFactory fac = new DiskFileItemFactory();
+				ServletFileUpload upload = new ServletFileUpload(fac);
+				List<FileItem> list = upload.parseRequest(request);
+				// 遍历集合
+				for(FileItem item:list) {
+					if(item.isFormField()) {
+						map.put(item.getFieldName(), item.getString("UTF-8"));
+					}else {
+						InputStream is = item.getInputStream();
+						
+						String realPath = getServletContext().getRealPath("/")+File.separator+UPLOAD_DIRECTORY;
+						File file = new File(realPath,item.getName());
+						if(!file.exists()) {
+							file.createNewFile();
+						}
+						OutputStream os = new FileOutputStream(file);
+						IOUtils.copy(is,os);
+						is.close();
+						IOUtils.closeQuietly(is);
+						IOUtils.closeQuietly(os);
+						String url = realPath+"\\"+item.getName();
+						map.put("url","/upload/video/"+item.getName());
+					}
+				}
+				BeanUtils.populate(video, map);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			if(userService.uploadVideo(video)) {
+				 response.sendRedirect("../myUser.jsp");
+			}
+		}
+		
+		if("findUserWithPage".equals(flag)) {
+			int currNum = Integer.valueOf(request.getParameter("num"));
+			PageModel pm = userService.findUserWithPage(currNum);
+			request.setAttribute("page", pm);
+			response.sendRedirect("../admin/user/user.jsp");
+		}
+		out.flush();
+		out.close();
 	}
 
 }

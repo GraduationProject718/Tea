@@ -25,6 +25,22 @@
     <servlet-name>AdminServlet</servlet-name>
     <url-pattern>/servlet/AdminServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>VideoServlet</servlet-name>
+    <servlet-class>action.VideoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VideoServlet</servlet-name>
+    <url-pattern>/servlet/VideoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MessageServlet</servlet-name>
+    <servlet-class>action.MessageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MessageServlet</servlet-name>
+    <url-pattern>/servlet/MessageServlet</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>filter.encodingFilter</filter-class>

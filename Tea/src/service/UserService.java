@@ -1,11 +1,14 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.jsp.jstl.sql.Result;
 
 import dao.Dao;
+import entity.PageModel;
 import entity.User;
+import entity.Video;
 
 public class UserService {
 	Dao dao = new Dao();
@@ -38,6 +41,22 @@ public class UserService {
 			user.add(u);
 		}
 		return user;
+	}
+	public boolean uploadVideo(Video video) {
+		String sql = "insert into video(name,url,information) value('"+video.getName()+"','"+video.getUrl()+"','"+video.getInformation()+"')";
+		if(dao.update(sql)>0){
+			return true;
+		}
+		return false;
+	}
+	public PageModel findUserWithPage(int currNum) {
+		String totalRecordsSQL = "select * from user";
+		int totalRecords = dao.totalRecords(totalRecordsSQL);
+		PageModel pm = new PageModel(currNum,totalRecords,3);
+		List list = dao.findUserWithPage(pm.getStartIndex(),pm.getPageSize());
+		pm.setList(list);
+		pm.setUrl("");
+		return pm;
 	}
 
 }

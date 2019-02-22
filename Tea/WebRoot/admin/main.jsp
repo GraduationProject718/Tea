@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="left">
 			<div class="bigTitle">中国茶文化后台管理系统</div>
 			<div class="lines">
-				<div onclick="pageClick(this)" class="active"><a href="admin/user/user.jsp" target="main"><img src="img/icon-1.png" />用户管理</a></div>
+				<div onclick="pageClick(this)" class="active"><a href="servlet/UserServlet?flag=findUserWithPage&num=1" target="main"><img src="img/icon-1.png" />用户管理</a></div>
 				<div onclick="pageClick(this)"><a href="admin/tea/tea.jsp" target="main"><img src="img/icon-2.png" />茶叶管理</a></div>
 				<div onclick="pageClick(this)"><a href="admin/ware/ware.jsp" target="main"><img src="img/icon-2.png" />茶具管理</a></div>
 				<div onclick="pageClick(this)"><a href="admin/article/article.jsp" target="main"><img src="img/icon-3.png" />文章管理</a></div>

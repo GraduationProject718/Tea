@@ -38,6 +38,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
 	
 	<script type="text/javascript">
+		$(document).ready(function(){
+			$.ajax({
+				type:"POST",
+				url:"servlet/VideoServlet",
+				data:{"flag":"getVideo"},
+				success:function(data){
+				}
+			});
+		});
+		
 		$(function(){
 			$("#login").click(function(){
 				var account = $("#loginAccount").val();
@@ -71,6 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
 			});
 		});
+		
 	</script>
   </head>
   
@@ -113,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<!-- 登录注册选项卡 end-->
   	<div class="i_tit2 max">
-		<h2>茶资讯</h2>
+		<h2><a href="news.jsp">茶资讯</a></h2>
 		<span>NEWS  CENTER</span>
 		<p>家族传承，古法炮制！传承创新，新鲜感觉！</p>
 		<hr />
@@ -192,10 +203,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 		
 		<div class="i_tit2 max">
-			<h2>视频展示</h2>
+			<h2><a href="video.jsp">视频展示</a></h2>
 			<span>NEWS  CENTER</span>
 			<p>家族传承，古法炮制！传承创新，新鲜感觉！</p>
 			<hr />
+			<ul class="news_tab max clearfix" id="video_tab">
+				<div class="bd">
+					<ul>
+						<c:forEach items="${video}" var="v">
+						<li>
+							<div class="pic bigimg">
+								<video src="${pageContext.request.contextPath}/${v.url}" style="width:280px;height:172px;" controls="controls"></video>
+							</div>
+							<h3>${v.name }</h3>
+							<p>${v.information }</p>
+						</li>
+						</c:forEach>
+						
+					</ul>
+				</div>
+				
+				<div class="hd">
+					<a class="prev"><img src="img/icon/left1.png" /></a>
+					<ul>
+						<c:forEach items="${video}" var="v">
+							<li></li>
+						</c:forEach>
+					</ul>
+					<a class="next"><img src="img/icon/right1.png" /></a>
+				</div>
+		</ul>
 		</div>
 		<div class="i_tit2 max">
 			<h2>留言板</h2>
@@ -205,16 +242,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
 	<script type="text/javascript">
-			jQuery("#news_tab").slide({
-				titCell: ".hd ul",
-				mainCell: ".bd ul",
-				autoPage: true,
-				effect: "leftLoop",
-				autoPlay: true,
-				vis: 4,
-				trigger: "click"
-			});
-		</script>
+		jQuery("#news_tab").slide({
+			titCell: ".hd ul",
+			mainCell: ".bd ul",
+			autoPage: true,
+			effect: "leftLoop",
+			autoPlay: true,
+			vis: 4,
+			trigger: "click"
+		});
+		
+		jQuery("#video_tab").slide({
+			titCell: ".hd ul",
+			mainCell: ".bd ul",
+			autoPage: true,
+			effect: "leftLoop",
+			autoPlay: true,
+			vis: 4,
+			trigger: "click"
+		});
+	</script>
   	<jsp:include page="footer.jsp"></jsp:include>
   </body>
 </html>

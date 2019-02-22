@@ -15,11 +15,6 @@ public class Dao {
 	private Statement stmt;
 	private ResultSet rs;
 	
-	/*	操作：
-	 * 	获取结果集：getList(String sql)
-	 * 	更新：update(String sql)
-	 * 
-	 * */
 	public Result getList(String sql) {
 		Result result =null;
 		try {
@@ -82,4 +77,22 @@ public class Dao {
 		}
 		return result;
 	}
+
+	public int totalRecords(String totalRecordsSQL) {
+		int result=0;
+		try {
+			con = jdbcUtils.getConnection();
+			stmt = con.createStatement();
+			rs=stmt.executeQuery(totalRecordsSQL);
+			if(rs.next()){
+				result++;
+		  }
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			jdbcUtils.releaseResources(rs, stmt, con);
+		}
+		return result;
+	}
+
 }

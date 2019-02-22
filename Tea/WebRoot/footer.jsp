@@ -18,12 +18,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</td>
 					</tr>
 				</table>
-				<form action="">
-					<p><input type="text" name="" id="" value="" placeholder="您的姓名..." /></p>
-					<p><input type="tel" name="" id="" value="" placeholder="您的电话..." /></p>
-					<p><input type="email" name="" id="" value="" placeholder="您的邮箱..." /></p>
+				<form action="servlet/MessageServlet?flag=addMessage" method="post">
+					<p><input type="text" name="name" id="name" placeholder="您的姓名..." /></p>
+					<p><input type="tel" name="phone" id="phone" placeholder="您的电话..." /></p>
+					<p><input type="email" name="email" id="email" placeholder="您的邮箱..." /></p>
 					<div class="bot clearfix">
-						<textarea name="" rows="" cols=""></textarea>
+						<textarea name="content" rows="" cols=""></textarea>
 						<input type="submit" class="btn" value="提交" formnovalidate="formnovalidate" />
 					</div>
 				</form>
