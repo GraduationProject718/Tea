@@ -49,7 +49,7 @@ public class UserService {
 		}
 		return false;
 	}
-	public PageModel findUserWithPage(int currNum) {
+	/*public PageModel findUserWithPage(int currNum) {
 		String totalRecordsSQL = "select * from user";
 		int totalRecords = dao.totalRecords(totalRecordsSQL);
 		PageModel pm = new PageModel(currNum,totalRecords,3);
@@ -57,6 +57,6 @@ public class UserService {
 		pm.setList(list);
 		pm.setUrl("");
 		return pm;
-	}
+	}*/
 
 }

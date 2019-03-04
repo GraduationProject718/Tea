@@ -126,12 +126,12 @@ public class UserServlet extends HttpServlet {
 			}
 		}
 		
-		if("findUserWithPage".equals(flag)) {
+		/*if("findUserWithPage".equals(flag)) {
 			int currNum = Integer.valueOf(request.getParameter("num"));
 			PageModel pm = userService.findUserWithPage(currNum);
 			request.setAttribute("page", pm);
 			response.sendRedirect("../admin/user/user.jsp");
-		}
+		}*/
 		out.flush();
 		out.close();
 	}
