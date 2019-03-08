@@ -3,6 +3,9 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<div class="">
+	<img alt="" src="img/TeaCulture.png"><a href="login.jsp">登录</a><a href="">注册</a>
+</div>
 <div class="header">
 	<div class="logo">
 		<img style="width:125px;height:125px;background:#EDEAE3;" src="img/icon/logo.png" />
