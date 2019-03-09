@@ -16,108 +16,169 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	
 	<link rel="stylesheet" type="text/css" href="css/pcreset.css" />
 	<link rel="stylesheet" type="text/css" href="css/pcless.css" />
-	<link rel="stylesheet" type="text/css" href="layui/css/layui.css" />
 	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="layui/layui.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
 	
-	<style type="text/css">
-		.login{
-			width:300px;
-		}
-		.login .submit{
-			width:100%;
-			height:45px;
-			background: url("img/pro-bg1.png") no-repeat center top;
-		}
-	</style>
+	<link type="text/css" rel="stylesheet" href="css/style.css">
+	<script src="js/img_ver.js"></script>
 	
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$.ajax({
-				type:"POST",
-				url:"servlet/VideoServlet",
-				data:{"flag":"getVideo"},
-				success:function(data){
-				}
-			});
-		});
-		
-		$(function(){
-			$("#login").click(function(){
-				var account = $("#loginAccount").val();
-				var password = $("#loginPassword").val();
-				$.ajax({
-						type:"POST",
-						url:"servlet/UserServlet",
-						data:{"flag":"login","account":account,"password":password},
-						success:function(data){
-							location="index.jsp";
-						}
-					});
-			});
-			$("#register").click(function(){
-				var account = $("#registerAccount").val();
-				var password1 = $("#registerPassword1").val();
-				var password2 = $("#registerPassword2").val();
-				if(password1 == password2){
-					$.ajax({
-						type:"POST",
-						url:"servlet/UserServlet",
-						data:{"flag":"register","account":account,"password":password1},
-						success:function(data){
-							alert(data);
-						}
-						
-					});
-				}else{
-					alert("密码不一致,请重新输入");
-					return false;
-				}
-			});
-		});
-		
-	</script>
-
+	
+<style>
+        .bxs-row {
+            margin-bottom:12px;
+        }
+        .logo-box {
+            width:404px;
+            margin:120px auto;
+            border:1px solid #e5e5e5;
+            border-radius:4px;
+            box-shadow:0 4px 18px rgba(0,0,0,0.2);
+            position:relative;
+            overflow:hidden;
+            height:360px;
+        }
+        .login {
+            position:absolute;
+            width:320px;left:0;
+            top:0;
+            padding: 42px 42px 36px;
+            transition:all 0.8s;
+        }
+        .username,.password,.btn {
+            height: 44px;
+            width: 100%;
+            padding: 0 10px;
+            border: 1px solid #9da3a6;
+            background: #fff;
+            text-overflow: ellipsis;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -khtml-border-radius: 4px;
+            border-radius: 4px;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            color: #000;
+            font-size: 1em;
+            font-family: Helvetica,Arial,sans-serif;
+            font-weight: 400;
+            direction: ltr;
+            font-size:13px;
+        }
+        .submit {
+            background-color: #0070ba;
+            color:#fff;
+            border:1px solid #0070ba;
+        }
+        .submit:hover {
+            background-color:#005ea6;
+        }
+        .verBox {
+            position:absolute;
+            width:100%;
+            text-align:center;
+            left:404px;
+            top:0;
+            opacity:0;
+            transition:all 0.8s;
+            padding-top:55px;
+        }
+        .err {
+            margin:12px 0 0;
+            line-height:12px;
+            height:12px;
+            font-size:12px;
+            color:red;
+        }
+</style>
+	
   </head>
   
   <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<!-- 登录注册选项卡 begin-->
- 	<div class="login">
- 	<c:if test="${user.name == null}">
- 	<div class="layui-tab">
-	  <ul class="layui-tab-title">
-	    <li class="layui-this">登录</li>
-	    <li>注册</li>
-	  </ul>
-	  <div class="layui-tab-content">
-	    <div class="layui-tab-item layui-show">
-			账号：<input type="text" name="loginAccount" id="loginAccount" /><br /><br />
-			密码：<input type="password" name="loginPassword" id="loginPassword" /><br /><br />
-			<input type="submit" class="submit" name="login" id="login" value="登录" />
+	
+	<div class="logo-box">
+		<div class="login" style="">
+			<div class="bxs-row" style="text-align:center;">
+				<img id="logo" src="img/logo.jpg" style="width:72px;"><span class="tips" style="color:red;">忍住不哭来段口技</span>
+			</div>
+			<div class="bxs-row">
+				<input type="text" class="username" placeholder="用户名" value="admin">
+				<p class=" err err-username"></p>
+			</div>
+	
+			<div class="bxs-row">
+				<input type="password" class="password" placeholder="密码">
+				<p class="err err-password"></p>
+			</div>
+	
+			<div class="bxs-row">
+				<input type="submit" class="submit btn" value="登录">
+			</div>
 		</div>
-	    <div class="layui-tab-item">
-			账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<input type="text" name="registerAccount" id="registerAccount" /><br /><br />
-			密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" name="registerPassword1" id="registerPassword1" /><br /><br />
-			密码确认：<input type="password" name="registerPassword2" id="registerPassword2" /><br /><br />
-			<input type="submit" class="submit" name="register" id="register" value="注册" />
+		
+		<div class="verBox">
+			<div id="imgVer" style="display:inline-block;"></div>
 		</div>
-	  </div>
 	</div>
-	</c:if>
-	<c:if test="${user.name != null}">
-		<a href="myUser.jsp" target="_self"><img style="width:100px;height:100px;float:right;" src="${user.imgUrl }"></a>
-	</c:if>
-	 </div>
+	
 	<script>
-	layui.use('element', function(){
-	  var element = layui.element;
-	});
+        imgVer({
+            el:'$("#imgVer")',
+            width:'260',
+            height:'116',
+            img:[
+                'img/ver.png',
+                'img/ver-1.png',
+                'img/ver-2.png',
+                'img/ver-3.png'
+            ],
+            success:function () {
+            	// 执行登录模块
+               /*  $(".login").css({
+                    "left":"0",
+                    "opacity":"1"
+                });
+                $(".verBox").css({
+                    "left":"404px",
+                    "opacity":"0"
+                }); */
+                var account = $(".username").val();
+                var password = $(".password").val()
+                location="${pageContext.request.contextPath}/UserServlet?method=login&account="+account+"&password="+password;
+                
+            },
+            error:function () {
+                //alert('错误什么都不执行')
+            }
+        });
+        $(".submit").on('click',function () {
+            if($(".username").val() == '') {
+                // $(".err-username").html('杂种！！你用户名呢！？？？');
+                $(".tips").html('老兄！！你用户名呢！？？？');
+                $("#logo").attr("src",'img/null-password.jpg')
+            } else if($(".password").val() == '') {
+                // $(".err-password").html('畜生！！你密码呢！？？？');
+                $(".tips").html('老兄！！你密码呢！？？？');
+                $("#logo").attr("src",'img/null-password.jpg')
+            } else {
+                $(".login").css({
+                    "left":"-404px",
+                    "opacity":"0"
+                });
+                $(".verBox").css({
+                    "left":"0",
+                    "opacity":"1"
+                })
+            }
+        })
 	</script>
-	<!-- 登录注册选项卡 end-->    
+      
 	<jsp:include page="footer.jsp"></jsp:include>
   </body>
 </html>

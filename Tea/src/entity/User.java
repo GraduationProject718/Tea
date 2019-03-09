@@ -1,13 +1,7 @@
 package entity;
 
-import java.io.Serializable;
-
-public class User implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private int id;
+public class User {
+	private String id;
 	private String account;
 	private String password;
 	private String name;
@@ -16,13 +10,12 @@ public class User implements Serializable {
 	private String birthday;
 	private String address;
 	private String phone;
-	private String imgName;
-	private String imgUrl;
-	
-	public int getId() {
+	private String img;
+	private String date;	// 注册时间
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getAccount() {
@@ -55,12 +48,7 @@ public class User implements Serializable {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getBirthday() {
-		return birthday;
-	}
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
+	
 	public String getAddress() {
 		return address;
 	}
@@ -73,17 +61,48 @@ public class User implements Serializable {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getImgName() {
-		return imgName;
+	public String getImg() {
+		return img;
 	}
-	public void setImgName(String imgName) {
-		this.imgName = imgName;
-	}
-	public String getImgUrl() {
-		return imgUrl;
-	}
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
+	public void setImg(String img) {
+		this.img = img;
 	}
 	
+	public String getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
+	
+	public User(String id, String account, String password, String name, String info, String gender, String birthday,
+			String address, String phone, String img, String date) {
+		super();
+		this.id = id;
+		this.account = account;
+		this.password = password;
+		this.name = name;
+		this.info = info;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.address = address;
+		this.phone = phone;
+		this.img = img;
+		this.date = date;
+	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", account=" + account + ", password=" + password + ", name=" + name + ", info="
+				+ info + ", gender=" + gender + ", birthday=" + birthday + ", address=" + address + ", phone=" + phone
+				+ ", img=" + img + ", date=" + date + "]";
+	}
+	public User() {
+	}
 }

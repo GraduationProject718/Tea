@@ -9,44 +9,21 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <servlet-name>UserServlet</servlet-name>
-    <servlet-class>action.UserServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UserServlet</servlet-name>
-    <url-pattern>/servlet/UserServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>AdminServlet</servlet-name>
-    <servlet-class>action.AdminServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminServlet</servlet-name>
-    <url-pattern>/servlet/AdminServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>VideoServlet</servlet-name>
-    <servlet-class>action.VideoServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>VideoServlet</servlet-name>
-    <url-pattern>/servlet/VideoServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>MessageServlet</servlet-name>
-    <servlet-class>action.MessageServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>MessageServlet</servlet-name>
-    <url-pattern>/servlet/MessageServlet</url-pattern>
-  </servlet-mapping>
   <filter>
-    <filter-name>encodingFilter</filter-name>
-    <filter-class>filter.encodingFilter</filter-class>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>filter.EncodingFilter</filter-class>
   </filter>
   <filter-mapping>
-    <filter-name>encodingFilter</filter-name>
+    <filter-name>EncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>servlet.UserServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/UserServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
