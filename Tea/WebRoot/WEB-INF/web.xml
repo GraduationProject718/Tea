@@ -21,9 +21,26 @@
     <servlet-name>UserServlet</servlet-name>
     <servlet-class>servlet.UserServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ArticleServlet</servlet-name>
+    <servlet-class>servlet.ArticleServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ArticleTypeServlet</servlet-name>
+    <servlet-class>servlet.ArticleTypeServlet</servlet-class>
+  </servlet>
+
 
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/UserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ArticleServlet</servlet-name>
+    <url-pattern>/ArticleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ArticleTypeServlet</servlet-name>
+    <url-pattern>//ArticleTypeServlet</url-pattern>
   </servlet-mapping>
 </web-app>
