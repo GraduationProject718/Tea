@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.Date;
+
 public class User {
 	private String id;
 	private String account;
@@ -11,7 +13,7 @@ public class User {
 	private String address;
 	private String phone;
 	private String img;
-	private String date;	// 注册时间
+	private Date date;	// 注册时间
 	public String getId() {
 		return id;
 	}
@@ -74,16 +76,22 @@ public class User {
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
-	
-	
+	public User() {
+	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", account=" + account + ", password=" + password + ", name=" + name + ", info="
+				+ info + ", gender=" + gender + ", birthday=" + birthday + ", address=" + address + ", phone=" + phone
+				+ ", img=" + img + ", date=" + date + "]";
+	}
 	public User(String id, String account, String password, String name, String info, String gender, String birthday,
-			String address, String phone, String img, String date) {
+			String address, String phone, String img, Date date) {
 		super();
 		this.id = id;
 		this.account = account;
@@ -97,12 +105,6 @@ public class User {
 		this.img = img;
 		this.date = date;
 	}
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", account=" + account + ", password=" + password + ", name=" + name + ", info="
-				+ info + ", gender=" + gender + ", birthday=" + birthday + ", address=" + address + ", phone=" + phone
-				+ ", img=" + img + ", date=" + date + "]";
-	}
-	public User() {
-	}
+	
+	
 }

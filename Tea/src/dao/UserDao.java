@@ -14,4 +14,11 @@ public class UserDao {
 		return qr.query(sql, new BeanHandler<User>(User.class),user.getAccount(),user.getPassword());
 	}
 
+	public void register(User u) throws Exception{
+		String sql = "insert into user values(?,?,?,?,?,?,?,?,?,?,?)";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		Object[] params = {u.getId(),u.getAccount(),u.getPassword(),u.getName(),u.getInfo(),u.getGender(),u.getBirthday(),u.getAddress(),u.getPhone(),u.getImg(),u.getDate()};
+		qr.update(sql,params);
+	}
+
 }

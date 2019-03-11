@@ -8,5 +8,9 @@ public class UserService {
 	public User login(User user)  throws Exception{
 		return userDao.login(user);
 	}
+	public void register(User u) throws Exception{
+		userDao.register(u);
+		
+	}
 
 }

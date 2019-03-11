@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  	<div class="layui-form layui-form-pane">
+	<div class="layui-form layui-form-pane">
 	<div class="layui-form-item">
 	<table>
 		<tr>
@@ -108,6 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  </tbody>
 	</table>
   	<jsp:include page="../pageFile.jsp"></jsp:include>
-	
+	</div>
+	</div>
   </body>
 </html>

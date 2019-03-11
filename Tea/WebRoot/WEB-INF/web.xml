@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>Tea</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -29,6 +28,11 @@
     <servlet-name>ArticleTypeServlet</servlet-name>
     <servlet-class>servlet.ArticleTypeServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>WareServlet</servlet-name>
+    <servlet-class>servlet.WareServlet</servlet-class>
+  </servlet>
+
 
 
   <servlet-mapping>
@@ -41,6 +45,10 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ArticleTypeServlet</servlet-name>
-    <url-pattern>//ArticleTypeServlet</url-pattern>
+    <url-pattern>/ArticleTypeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WareServlet</servlet-name>
+    <url-pattern>/WareServlet</url-pattern>
   </servlet-mapping>
 </web-app>

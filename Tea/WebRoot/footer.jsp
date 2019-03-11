@@ -19,9 +19,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
 				</table>
 				<form action="servlet/MessageServlet?flag=addMessage" method="post">
-					<p><input type="text" name="name" id="name" placeholder="您的姓名..." /></p>
-					<p><input type="tel" name="phone" id="phone" placeholder="您的电话..." /></p>
-					<p><input type="email" name="email" id="email" placeholder="您的邮箱..." /></p>
+					<p><input type="text"  placeholder="您的姓名..." /></p>
+					<p><input type="tel"  placeholder="您的电话..." /></p>
+					<p><input type="email"  placeholder="您的邮箱..." /></p>
 					<div class="bot clearfix">
 						<textarea name="content" rows="" cols=""></textarea>
 						<input type="submit" class="btn" value="提交" formnovalidate="formnovalidate" />
