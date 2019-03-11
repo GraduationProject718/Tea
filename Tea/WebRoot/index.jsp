@@ -23,75 +23,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="layui/layui.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/include.js"></script>
-	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$.ajaxSettings.async = false;
+			$.post("${pageContext.request.contextPath}/ArticleServlet?method=getIndexArticle",{"":""},function(data){
+			},"",false);
+			$.post("${pageContext.request.contextPath}/VideosServlet?method=getIndexVideos",{"":""},function(data){
+			},"",false);
+		});
+	</script>
   </head>
   
   <body>
   <jsp:include page="header.jsp"></jsp:include>
  	<div class="p_news clearfix">
   	<div class="i_tit2 max">
-		<h2><a href="news.jsp">茶资讯</a></h2>
+		<h2><a href="ArticleServlet?method=findArticleByTypeId&typeId=4&num=1">茶资讯</a></h2>
 		<span>NEWS  CENTER</span>
 		<p>家族传承，古法炮制！传承创新，新鲜感觉！</p>
 		<hr />
 		<ul class="news_tab max clearfix" id="news_tab">
 			<div class="bd">
 				<ul>
+					<c:forEach items="${indexArticle}" var="ia">
 					<li>
-						<a href="">
+						<a href="ArticleServlet?method=findArticleById&id=${ia.id }">
 							<div class="pic bigimg">
-								<img style="background: url(img/tea4.jpg);" src="img/icon/png.png" alt="" />
+								<img style="background: url(${pageContext.request.contextPath}/${ia.img });" src="img/icon/png.png" alt="" />
 							</div>
-							<h3>乾式科技研发造茶新工艺...</h3>
-							<p>
-								2018年5月13日，乾式科技集团董事会召开新闻发布会称，研发出造茶新工艺，将于年底上市...
-							</p>
+							<h3>${ia.title }</h3>
+							<div style="height:30px;">${ia.content }</div>
 						</a>
 					</li>
-					<li>
-						<a href="">
-							<div class="pic bigimg">
-								<img style="background: url(img/tea5.jpg);" src="img/icon/png.png" alt="" />
-							</div>
-							<h3>乾式科技研发造茶新工艺...</h3>
-							<p>
-								2018年5月13日，乾式科技集团董事会召开新闻发布会称，研发出造茶新工艺，将于年底上市...
-							</p>
-						</a>
-					</li>
-					<li>
-						<a href="">
-							<div class="pic bigimg">
-								<img style="background: url(img/tea2.jpg);" src="img/icon/png.png" alt="" />
-							</div>
-							<h3>乾式科技研发造茶新工艺...</h3>
-							<p>
-								2018年5月13日，乾式科技集团董事会召开新闻发布会称，研发出造茶新工艺，将于年底上市...
-							</p>
-						</a>
-					</li>
-					<li>
-						<a href="">
-							<div class="pic bigimg">
-								<img style="background: url(img/tea7.jpg);" src="img/icon/png.png" alt="" />
-							</div>
-							<h3>乾式科技研发造茶新工艺...</h3>
-							<p>
-								2018年5月13日，乾式科技集团董事会召开新闻发布会称，研发出造茶新工艺，将于年底上市...
-							</p>
-						</a>
-					</li>
-					<li>
-						<a href="">
-							<div class="pic bigimg">
-								<img style="background: url(img/tea3.jpg);" src="img/icon/png.png" alt="" />
-							</div>
-							<h3>乾式科技研发造茶新工艺...</h3>
-							<p>
-								2018年5月13日，乾式科技集团董事会召开新闻发布会称，研发出造茶新工艺，将于年底上市...
-							</p>
-						</a>
-					</li>
+					</c:forEach>
 				</ul>
 			</div>
 			<div class="hd">
@@ -116,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<ul class="news_tab max clearfix" id="video_tab">
 				<div class="bd">
 					<ul>
-						<c:forEach items="${video}" var="v">
+						<c:forEach items="${indexVideos}" var="v">
 						<li>
 							<div class="pic bigimg">
 								<video src="${pageContext.request.contextPath}/${v.url}" style="width:280px;height:172px;" controls="controls"></video>
@@ -125,7 +89,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<p>${v.information }</p>
 						</li>
 						</c:forEach>
-						
 					</ul>
 				</div>
 				

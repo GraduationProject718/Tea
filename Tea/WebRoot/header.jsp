@@ -33,19 +33,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</li>
 			<li></li>
 			<li>
-				<a href="health.jsp">
+				<a href="ArticleServlet?method=findArticleByTypeId&typeId=1&num=1">
 					<h2>茶与养生</h2>
 					<h4>HEALTH</h4>
 				</a>
 			</li>
 			<li>
-				<a href="art.jsp">
+				<a href="ArticleServlet?method=findArticleByTypeId&typeId=2&num=1">
 					<h2>茶艺茶道</h2>
 					<h4>ART</h4>
 				</a>
 			</li>
 			<li>
-				<a href="history.jsp">
+				<a href="ArticleServlet?method=findArticleByTypeId&typeId=3&num=1">
 					<h2>茶历史</h2>
 					<h4>HISTORY</h4>
 				</a>

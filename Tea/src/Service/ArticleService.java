@@ -32,5 +32,19 @@ public class ArticleService {
 	public void editArticle(Article article) throws Exception{
 		articleDao.editArticle(article);
 	}
+	public PageModel findArticleByTypeId(int curNum, String typeId)throws Exception {
+		int totalRecords =articleDao.findTotalRecords(typeId);
+		PageModel pm = new PageModel(curNum,totalRecords,5);
+		List<Article> list = articleDao.findArticleByTypeId(pm.getStartIndex(),pm.getPageSize(),typeId);
+		pm.setList(list);
+		pm.setUrl("ArticleServlet?method=findArticleByTypeId&typeId="+typeId);
+		return pm;
+	}
+	public Article findArticleById(String id) throws Exception{
+		return articleDao.findArticleById(id);
+	}
+	public List<Article> getIndexArticle()throws Exception {
+		return articleDao.getIndexArticle();
+	}
 
 }

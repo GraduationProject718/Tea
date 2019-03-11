@@ -32,6 +32,11 @@
     <servlet-name>WareServlet</servlet-name>
     <servlet-class>servlet.WareServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>VideosServlet</servlet-name>
+    <servlet-class>servlet.VideosServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -50,5 +55,9 @@
   <servlet-mapping>
     <servlet-name>WareServlet</servlet-name>
     <url-pattern>/WareServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VideosServlet</servlet-name>
+    <url-pattern>/VideosServlet</url-pattern>
   </servlet-mapping>
 </web-app>

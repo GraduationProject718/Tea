@@ -22,6 +22,7 @@ import Service.ArticleTypeService;
 import entity.Article;
 import entity.ArticleType;
 import entity.PageModel;
+import net.sf.json.JSONArray;
 import utils.UUIDUtils;
 import utils.UploadUtils;
 
@@ -36,6 +37,26 @@ public class ArticleServlet extends BaseServlet {
 		return "/admin/article/add.jsp";
 	}
 	
+	public String findArticleByTypeId(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int curNum = Integer.parseInt(request.getParameter("num"));
+		String typeId = request.getParameter("typeId");
+		PageModel pm = articleService.findArticleByTypeId(curNum,typeId);
+		request.setAttribute("page", pm);
+		return "article.jsp";
+	}
+	public String findArticleById(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String id = request.getParameter("id");
+		Article article = articleService.findArticleById(id);
+		request.setAttribute("aView", article);
+		return "/articleView.jsp";
+	}
+	
+	public String getIndexArticle(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		List<Article> article = articleService.getIndexArticle();
+		request.getSession().setAttribute("indexArticle", article);
+		response.sendRedirect("index.jsp");
+		return null;
+	}
 	public String getList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int curNum = Integer.parseInt(request.getParameter("num"));
 		PageModel pm = articleService.getList(curNum);

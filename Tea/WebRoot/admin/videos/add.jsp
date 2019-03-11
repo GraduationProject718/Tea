@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>中国茶文化后台管理系统</title>
+    <title>添加视频</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,6 +23,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+    <form action="VideosServlet?method=addVideos" method="post" enctype="multipart/form-data">
+    	视频名称<input type="text" id="name" name="name"  /><br />
+    	文件<input type="file" id="url" name="url" /><br />
+    	简介<textarea rows="10" cols="100" id="information" name="information"></textarea><br />
+    	<input type="submit" value="提交" />
+    </form>
   </body>
 </html>

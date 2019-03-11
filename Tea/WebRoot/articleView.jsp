@@ -9,22 +9,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>中国茶文化网</title>
+    <title>文章显示</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
+	
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
   </head>
   
   <body>
-    <jsp:include page="header.jsp"></jsp:include>
-    茶艺茶道
-  <jsp:include page="footer.jsp"></jsp:include>
+  	<jsp:include page="header.jsp"></jsp:include>
+	<center><h1 style="padding:20px;font-size:30px;">${aView.title }</h1>${aView.date }</center>
+	<div style="width:400px;height:auto;margin:0 auto;"><img src="${pageContext.request.contextPath}/${aView.img }"> </div>
+	<div style="float:right;padding:20px;"></div>
+	<div style="padding:20px;width:80%;margin:0 auto;">${aView.content }</div>
+    <jsp:include page="footer.jsp"></jsp:include>
   </body>
 </html>
