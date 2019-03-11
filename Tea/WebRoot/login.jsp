@@ -149,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     "opacity":"0"
                 }); */
                 var account = $(".username").val();
-                var password = $(".password").val()
+                var password = $(".password").val();
                 location="${pageContext.request.contextPath}/UserServlet?method=login&account="+account+"&password="+password;
                 
             },
