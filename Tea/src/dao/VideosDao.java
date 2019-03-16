@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
+import entity.Article;
 import entity.Videos;
 import utils.JDBCUtils;
 
@@ -21,6 +23,19 @@ public class VideosDao {
 		String sql = "select * from video order by date desc limit 0,5";
 		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		return qr.query(sql, new BeanListHandler<Videos>(Videos.class));
+	}
+
+	public int findTotalRecordsByAll() throws Exception{
+		String sql = "select count(*) from video";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		Long num = (Long)qr.query(sql, new ScalarHandler());
+		return num.intValue();
+	}
+
+	public List<Videos> findAllVideosByPage(int startIndex, int pageSize) throws Exception{
+		String sql = "select * from video order by date desc limit ?,?";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		return qr.query(sql, new BeanListHandler<Videos>(Videos.class),startIndex,pageSize);
 	}
 
 }

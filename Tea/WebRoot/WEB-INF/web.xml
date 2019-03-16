@@ -36,8 +36,18 @@
     <servlet-name>VideosServlet</servlet-name>
     <servlet-class>servlet.VideosServlet</servlet-class>
   </servlet>
-
-
+  <servlet>
+    <servlet-name>TeaParentServlet</servlet-name>
+    <servlet-class>servlet.TeaParentServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TeaChildServlet</servlet-name>
+    <servlet-class>servlet.TeaChildServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TeaArticleServlet</servlet-name>
+    <servlet-class>servlet.TeaArticleServlet</servlet-class>
+  </servlet>
 
 
   <servlet-mapping>
@@ -60,4 +70,17 @@
     <servlet-name>VideosServlet</servlet-name>
     <url-pattern>/VideosServlet</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TeaParentServlet</servlet-name>
+    <url-pattern>/TeaParentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TeaChildServlet</servlet-name>
+    <url-pattern>/TeaChildServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TeaArticleServlet</servlet-name>
+    <url-pattern>/TeaArticleServlet</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 		
 		<div class="i_tit2 max">
-			<h2><a href="video.jsp">视频展示</a></h2>
+			<h2><a href="VideosServlet?method=findAllVideosByPage&num=1">视频展示</a></h2>
 			<span>NEWS  CENTER</span>
 			<p>家族传承，古法炮制！传承创新，新鲜感觉！</p>
 			<hr />

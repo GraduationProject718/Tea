@@ -32,7 +32,6 @@ public class ArticleDao {
 		String sql = "select * from article order by date desc limit ?,?";
 		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		return qr.query(sql, new BeanListHandler<Article>(Article.class),startIndex,pageSize);
-
 	}
 
 	public boolean delArticle(String id) throws SQLException{

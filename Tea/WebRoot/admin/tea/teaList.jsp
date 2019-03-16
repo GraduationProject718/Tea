@@ -51,31 +51,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
 	
 	<script type="text/javascript">
-		function del(id){
+		function delArticle(id){
 			if(confirm("是否确认删除")){
-				location="WareServlet?method=del&id="+id;
+				location="ArticleServlet?method=delArticle&id="+id;
 			}else{
 				return false;
 			}
 		}
 		
-		function edit(id){
-			location="WareServlet?method=edit&id="+id;
+		function editArticle(id){
+			location="ArticleServlet?method=editArticleById&id="+id;
 		}
 	</script>
   </head>
   
   <body>
-  	<div class="layui-form layui-form-pane">
+	<div class="layui-form layui-form-pane">
 	<div class="layui-form-item">
 	<table>
 		<tr>
 			<td>
-				<a href="${pageContext.request.contextPath}/WareServlet?method=addWarePage"><button class="layui-btn layui-btn-normal">添加茶具</button></a>
+				<a href="${pageContext.request.contextPath}/admin/tea/addTeaParent.jsp"><button class="layui-btn layui-btn-normal">添加大分类茶叶</button></a>
+			</td>
+			<td>
+				<a href="${pageContext.request.contextPath}/TeaChildServlet?method=addToPage"><button class="layui-btn layui-btn-normal">添加小分类茶叶</button></a>
+			</td>
+			<td>
+				<a href="${pageContext.request.contextPath}/TeaArticleServlet?method=addToPage"><button class="layui-btn layui-btn-normal">添加茶叶相关文章</button></a>
 			</td>
 		</tr>
 	</table>
-	<table class="layui-table">
+	<%-- <table class="layui-table">
 	  <colgroup>
 	  	<col width="50">
 	  	<col width="50">
@@ -93,21 +99,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    </tr> 
 	  </thead>
 	  <tbody>
-	    <c:forEach items="${page.list}" var="w" varStatus="status">
+	    <c:forEach items="${page.list}" var="a" varStatus="status">
 	    <tr>
 	    	<td>${status.count}</td>
-			<td><img style="width:30px;height:30px;" src="${pageContext.request.contextPath}/${w.img }"> </td>
-			<td>${w.name } </td>
-			<td>${w.date }</td>
+			<td><img style="width:30px;height:30px;" src="${pageContext.request.contextPath}/${a.img }"> </td>
+			<td>${a.title } </td>
+			<td>${a.date }</td>
 			<td>
-				<button class="layui-btn layui-btn-normal" onclick="edit('${w.id}');" ><i class="layui-icon">&#xe642;</i></button>
-				<button class="layui-btn layui-btn-normal" onclick="del('${w.id}');" ><i class="layui-icon">&#xe640;</i></button>
+				<button class="layui-btn layui-btn-normal" onclick="editArticle('${a.id}');" ><i class="layui-icon">&#xe642;</i></button>
+				<button class="layui-btn layui-btn-normal" onclick="delArticle('${a.id}');" ><i class="layui-icon">&#xe640;</i></button>
 			</td>
 	    </tr>
 	    </c:forEach>
 	  </tbody>
 	</table>
-  	<jsp:include page="../pageFile.jsp"></jsp:include>
+  	<jsp:include page="../pageFile.jsp"></jsp:include> --%>
 	</div>
 	</div>
   </body>

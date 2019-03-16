@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,23 +10,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>添加茶具</title>
+    <title></title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
 
   </head>
   
   <body>
-  <form action="/Tea/WareServlet?method=addWare" method="post" enctype="multipart/form-data">
-    茶具名称<input type="text" id="name" name="name" /><br /><br />
-  茶具介绍<textarea rows="10" cols="100" id="desc" name="desc"></textarea><br /><br />
-  茶具图片<input type="file" id="img" name="img" /> <br /><br />
-  <input type="submit" value="添加"><br /><br />
-  </form> 
+	<form action="TeaChildServlet?method=add" method="post">
+		子项目名:<input type="text" name="name" id="name" />
+		所属父项目:
+		<select name="parentId">
+		<c:forEach items="${teaParent}" var="tp">
+			<option value="${tp.id }">${tp.name }</option>
+		</c:forEach>
+		</select>
+		介绍:<textarea rows="10" cols="100" name="desc" id="desc"></textarea>
+		功能:<textarea rows="10" cols="100" name="function" id="function"></textarea>
+		<input type="submit" value="添加" />
+	</form>
   </body>
 </html>

@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,36 +20,44 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
 
-import Service.VideosService;
+import Service.TeaArticleService;
+import Service.TeaChildService;
+import Service.TeaParentService;
 import entity.Article;
 import entity.PageModel;
-import entity.Videos;
+import entity.TeaArticle;
+import entity.TeaChild;
+import entity.TeaParent;
 import utils.UUIDUtils;
 import utils.UploadUtils;
 
-public class VideosServlet extends BaseServlet {
-	VideosService videosService = new VideosService();
-	public String getList(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return "/admin/videos/videosList.jsp";
+public class TeaArticleServlet extends BaseServlet {
+	TeaArticleService teaArticleService = new TeaArticleService();
+	
+	public String addToPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		TeaChildService teaChildService = new TeaChildService();
+		List<TeaChild> teaChild = teaChildService.getAllTeaChild();
+		request.setAttribute("teaChild", teaChild);
+		return "/admin/tea/addTeaArticle.jsp";
 	}
 	
-	public String findAllVideosByPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String findAllByAdmin(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int curNum = Integer.parseInt(request.getParameter("num"));
-		PageModel pm = videosService.findAllVideosByPage(curNum);
+		TeaParentService teaParentService = new TeaParentService();
+		List<TeaParent> teaParent = teaParentService.getAllTeaParent();
+		request.setAttribute("teaParent", teaParent);
+		
+		TeaChildService teaChildService = new TeaChildService();
+		List<TeaChild> teaChild = teaChildService.getAllTeaChild();
+		request.setAttribute("teaChild", teaChild);
+		
+		PageModel pm = teaArticleService.findAllByAdmin(curNum);
 		request.setAttribute("page", pm);
-		return "video.jsp";
+		return "/admin/tea/teaList.jsp";
 	}
-	
-	public String getIndexVideos(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		List<Videos> videos = videosService.getIndexVideos();
-		request.getSession().setAttribute("indexVideos", videos);
-		response.sendRedirect("index.jsp");
-		return null;
-	}
-	
-	public String addVideos(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String add(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Map<String,String> map=new HashMap<String,String>();
-		Videos videos = new Videos();
+		TeaArticle teaArticle = new TeaArticle();
 		try {
 			DiskFileItemFactory fac=new DiskFileItemFactory();
 			ServletFileUpload upload=new ServletFileUpload(fac);
@@ -62,7 +69,7 @@ public class VideosServlet extends BaseServlet {
 					String oldFileName=item.getName();
 					String newFileName=UploadUtils.getUUIDName(oldFileName);
 					InputStream is=item.getInputStream();
-					String realPath=getServletContext().getRealPath("/videos/");
+					String realPath=getServletContext().getRealPath("/img/");
 					String dir=UploadUtils.getDir(newFileName); 
 					String path=realPath+dir; 
 					File newDir=new File(path);
@@ -77,17 +84,17 @@ public class VideosServlet extends BaseServlet {
 					IOUtils.copy(is, os);
 					IOUtils.closeQuietly(is);
 					IOUtils.closeQuietly(os);
-					map.put("url", "/videos/"+dir+"/"+newFileName);
+					map.put("img", "/img/"+dir+"/"+newFileName);
 				}
 			}
-			BeanUtils.populate(videos, map);
-			videos.setId(UUIDUtils.getId());
-			videos.setDate(new Date());
-			videosService.addVideos(videos);
-			response.sendRedirect("VideosServlet?method=getList&num=1");
+			BeanUtils.populate(teaArticle, map);
+			teaArticle.setId(UUIDUtils.getId());
+			teaArticleService.add(teaArticle);
+			response.sendRedirect("");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
+
 	}
 }

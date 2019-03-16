@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</a>
 			</li>
 			<li>
-				<a href="ware.jsp">
+				<a href="WareServlet?method=findAllWareByIndex&num=1">
 					<h2>茶具</h2>
 					<h4>WARE</h4>
 				</a>

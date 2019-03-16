@@ -9,23 +9,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>添加茶具</title>
+    <title>添加茶叶</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
 
   </head>
   
   <body>
-  <form action="/Tea/WareServlet?method=addWare" method="post" enctype="multipart/form-data">
-    茶具名称<input type="text" id="name" name="name" /><br /><br />
-  茶具介绍<textarea rows="10" cols="100" id="desc" name="desc"></textarea><br /><br />
-  茶具图片<input type="file" id="img" name="img" /> <br /><br />
-  <input type="submit" value="添加"><br /><br />
-  </form> 
+	<form action="TeaParentServlet?method=add" method="post">
+		父项名称:<input type="text" name="name" id="name" />
+		<input type="submit" value="添加" />
+	</form>
   </body>
 </html>

@@ -9,20 +9,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>中国茶文化后台管理系统</title>
+    <title>添加茶具</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	
 
   </head>
   
   <body>
-    This is my JSP page. <br>
+  <form action="WareServlet?method=editOK" method="post" enctype="multipart/form-data">
+    茶具名称<input type="text" id="name" name="name" value="${ware.name }"/><br /><br />
+  茶具介绍<textarea rows="10" cols="100" id="desc" name="desc">${ware.desc }</textarea><br /><br />
+  <input type="hidden" value="${ware.id }">
+  <input type="submit" value="修改"><br /><br />
+  </form> 
   </body>
 </html>
