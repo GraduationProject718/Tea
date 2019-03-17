@@ -21,10 +21,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <form action="WareServlet?method=editOK" method="post" enctype="multipart/form-data">
+  <form action="WareServlet?method=editOK" method="post">
     茶具名称<input type="text" id="name" name="name" value="${ware.name }"/><br /><br />
   茶具介绍<textarea rows="10" cols="100" id="desc" name="desc">${ware.desc }</textarea><br /><br />
-  <input type="hidden" value="${ware.id }">
+  <input type="hidden" value="${ware.id }" name="id" id="id" />
   <input type="submit" value="修改"><br /><br />
   </form> 
   </body>

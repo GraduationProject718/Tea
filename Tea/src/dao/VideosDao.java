@@ -38,4 +38,11 @@ public class VideosDao {
 		return qr.query(sql, new BeanListHandler<Videos>(Videos.class),startIndex,pageSize);
 	}
 
+	public void del(String id) throws Exception{
+		String sql = "delete from video where id =?";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		qr.update(sql,id);
+		
+	}
+
 }

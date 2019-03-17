@@ -20,5 +20,11 @@ public class TeaArticleService {
 		pm.setUrl("TeaArticleServlet?method=findAllByAdmin");
 		return pm;
 	}
+	public void delTeaArticle(String id) throws Exception{
+		teaArticleDao.delTeaArticle(id);
+	}
+	public TeaArticle editTeaArticle(String id) throws Exception{
+		return teaArticleDao.editTeaArticle(id);
+	}
 
 }

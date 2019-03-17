@@ -51,16 +51,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
 	
 	<script type="text/javascript">
-		function delArticle(id){
+		function delTeaArticle(id){
 			if(confirm("是否确认删除")){
-				location="ArticleServlet?method=delArticle&id="+id;
+				location="TeaArticleServlet?method=delTeaArticle&id="+id;
 			}else{
 				return false;
 			}
 		}
 		
-		function editArticle(id){
-			location="ArticleServlet?method=editArticleById&id="+id;
+		function editTeaArticle(id){
+			location="TeaArticleServlet?method=editTeaArticle&id="+id;
+		}
+		
+		function delTeaChild(id){
+			if(confirm("是否确认删除")){
+				location="TeaChildServlet?method=delTeaChild&id="+id;
+			}else{
+				return false;
+			}
+		}
+		
+		function editTeaChild(id){
+			location="TeaChildServlet?method=editTeaChild&id="+id;
 		}
 	</script>
   </head>
@@ -81,7 +93,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</td>
 		</tr>
 	</table>
-	<%-- <table class="layui-table">
+	
+	<table>
+		<tr>
+			<c:forEach items="${teaParent}" var="tp" >
+			<td>
+				<div style="margin:20px;">${tp.name}</div>
+			</td>
+			</c:forEach>
+		</tr>
+	</table>	
+	
+  	<c:forEach items="${teaParent}" var="tp" >
+  	<div style="float:left;margin:20px;">${tp.name}
+  	<c:forEach items="${teaChild}" var="tc">
+  		<c:if test="${tp.id == tc.parentId }">
+			<div>${tc.name }<a href="javascript:editTeaChild('${tc.id }');">编辑</a><a href="javascript:delTeaChild('${tc.id }');">删除</a></div>
+		</c:if>
+	</c:forEach>
+	</div>
+	</c:forEach>
+
+	<table class="layui-table">
 	  <colgroup>
 	  	<col width="50">
 	  	<col width="50">
@@ -106,14 +139,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<td>${a.title } </td>
 			<td>${a.date }</td>
 			<td>
-				<button class="layui-btn layui-btn-normal" onclick="editArticle('${a.id}');" ><i class="layui-icon">&#xe642;</i></button>
-				<button class="layui-btn layui-btn-normal" onclick="delArticle('${a.id}');" ><i class="layui-icon">&#xe640;</i></button>
+				<button class="layui-btn layui-btn-normal" onclick="editTeaArticle('${a.id}');" ><i class="layui-icon">&#xe642;</i></button>
+				<button class="layui-btn layui-btn-normal" onclick="delTeaArticle('${a.id}');" ><i class="layui-icon">&#xe640;</i></button>
 			</td>
 	    </tr>
 	    </c:forEach>
 	  </tbody>
 	</table>
-  	<jsp:include page="../pageFile.jsp"></jsp:include> --%>
+  	<jsp:include page="../pageFile.jsp"></jsp:include>
 	</div>
 	</div>
   </body>

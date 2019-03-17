@@ -4,7 +4,7 @@ public class TeaChild {
 	private String id;
 	private String parentId;
 	private String name;
-	private String desc;
+	private String info;
 	private String function;
 	public String getId() {
 		return id;
@@ -24,11 +24,12 @@ public class TeaChild {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDesc() {
-		return desc;
+	
+	public String getInfo() {
+		return info;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setInfo(String info) {
+		this.info = info;
 	}
 	public String getFunction() {
 		return function;
@@ -38,17 +39,17 @@ public class TeaChild {
 	}
 	public TeaChild() {
 	}
-	public TeaChild(String id, String parentId, String name, String desc, String function) {
+	public TeaChild(String id, String parentId, String name, String info, String function) {
 		super();
 		this.id = id;
 		this.parentId = parentId;
 		this.name = name;
-		this.desc = desc;
+		this.info = info;
 		this.function = function;
 	}
 	@Override
 	public String toString() {
-		return "TeaChild [id=" + id + ", parentId=" + parentId + ", name=" + name + ", desc=" + desc + ", function="
+		return "TeaChild [id=" + id + ", parentId=" + parentId + ", name=" + name + ", info=" + info + ", function="
 				+ function + "]";
 	}
 	

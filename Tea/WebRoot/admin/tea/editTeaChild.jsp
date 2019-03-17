@@ -24,17 +24,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	<form action="TeaChildServlet?method=add" method="post">
-		子项目名:<input type="text" name="name" id="name" /><br /><br />
+	<form action="TeaChildServlet?method=edit" method="post">
+		子项目名:<input type="text" name="name" id="name" value="${teaChild.name }"/><br /><br />
 		所属父项目:
 		<select name="parentId">
 		<c:forEach items="${teaParent}" var="tp">
+			<c:if test="${tp.id == teaChild.parentId }">
+				<option value="${tp.id }" selected="selected">${tp.name }</option>
+			</c:if>
 			<option value="${tp.id }">${tp.name }</option>
 		</c:forEach>
 		</select><br /><br />
-		介绍:<textarea rows="10" cols="100" name="info" id="info"></textarea><br /><br />
-		功能:<textarea rows="10" cols="100" name="function" id="function"></textarea><br /><br />
-		<input type="submit" value="添加" /><br /><br />
+		介绍:<textarea rows="10" cols="100" name="info" id="info" > ${teaChild.info}</textarea><br /><br />
+		功能:<textarea rows="10" cols="100" name="function" id="function">${teaChild.function}</textarea><br /><br />
+		<input type="hidden" value="${teaChild.id }" name="id" id="id" />
+		<input type="submit" value="修改" /><br /><br />
 	</form>
   </body>
 </html>

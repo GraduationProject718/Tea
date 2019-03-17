@@ -55,45 +55,17 @@ public class WareServlet extends BaseServlet {
 		return "/admin/ware/ware.jsp";
 	}
 	public String editOK(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		Map<String,String> map=new HashMap<String,String>();
+		String name = request.getParameter("name");
+		String desc = request.getParameter("desc");
+		String id = request.getParameter("id");
 		Ware ware = new Ware();
-		try {
-			DiskFileItemFactory fac=new DiskFileItemFactory();
-			ServletFileUpload upload=new ServletFileUpload(fac);
-			List<FileItem> list=upload.parseRequest(request);
-			for (FileItem item : list) {
-				if(item.isFormField()){
-					map.put(item.getFieldName(), item.getString("utf-8"));
-				}else{
-					String oldFileName=item.getName();
-					String newFileName=UploadUtils.getUUIDName(oldFileName);
-					InputStream is=item.getInputStream();
-					String realPath=getServletContext().getRealPath("/upload/");
-					String dir=UploadUtils.getDir(newFileName); 
-					String path=realPath+dir; 
-					File newDir=new File(path);
-					if(!newDir.exists()){
-						newDir.mkdirs();
-					}
-					File finalFile=new File(newDir,newFileName);
-					if(!finalFile.exists()){
-						finalFile.createNewFile();
-					}
-					OutputStream os=new FileOutputStream(finalFile);
-					IOUtils.copy(is, os);
-					IOUtils.closeQuietly(is);
-					IOUtils.closeQuietly(os);
-					map.put("img", "/upload/"+dir+"/"+newFileName);
-				}
-			}
-			BeanUtils.populate(ware, map);
-			ware.setDate(new Date());
-			wareService.editOK(ware);
-			response.sendRedirect("WareServlet?method=findAllWareByAdmin&num=1");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		ware.setId(id);
+		ware.setName(name);
+		ware.setDesc(desc);
+		wareService.editOK(ware);
+		response.sendRedirect("WareServlet?method=findAllWareByAdmin&num=1");
 		return null;
+		
 	}
 	
 	

@@ -30,7 +30,10 @@ import utils.UploadUtils;
 
 public class VideosServlet extends BaseServlet {
 	VideosService videosService = new VideosService();
-	public String getList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String findAllByAdmin(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int curNum = Integer.parseInt(request.getParameter("num"));
+		PageModel pm = videosService.findAllByAdmin(curNum);
+		request.setAttribute("page", pm);
 		return "/admin/videos/videosList.jsp";
 	}
 	
@@ -45,6 +48,12 @@ public class VideosServlet extends BaseServlet {
 		List<Videos> videos = videosService.getIndexVideos();
 		request.getSession().setAttribute("indexVideos", videos);
 		response.sendRedirect("index.jsp");
+		return null;
+	}
+	public String del(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String id = request.getParameter("id");
+		videosService.del(id);
+		response.sendRedirect("VideosServlet?method=findAllByAdmin&num=1");
 		return null;
 	}
 	
@@ -84,7 +93,7 @@ public class VideosServlet extends BaseServlet {
 			videos.setId(UUIDUtils.getId());
 			videos.setDate(new Date());
 			videosService.addVideos(videos);
-			response.sendRedirect("VideosServlet?method=getList&num=1");
+			response.sendRedirect("VideosServlet?method=findAllByAdmin&num=1");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

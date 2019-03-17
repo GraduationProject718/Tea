@@ -53,10 +53,9 @@ public class WareDao {
 	}
 
 	public void editOK(Ware ware) throws Exception{
-		String sql="UPDATE ware SET name=?, desc=?, date=? WHERE id=?";
+		String sql="update ware set name=? where id=?";
 		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
-		Object[] params={ware.getName(),ware.getDesc(),ware.getDate(),ware.getId()};
-		qr.update(sql,params);
+		qr.update(sql,ware.getName(),ware.getId());
 	}
 
 }

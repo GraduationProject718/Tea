@@ -41,6 +41,19 @@ public class TeaArticleServlet extends BaseServlet {
 		return "/admin/tea/addTeaArticle.jsp";
 	}
 	
+	public String delTeaArticle(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String id = request.getParameter("id");
+		teaArticleService.delTeaArticle(id);
+		response.sendRedirect("TeaArticleServlet?method=findAllByAdmin&num=1");
+		return null;
+	}
+	
+	public String editTeaArticle(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String id = request.getParameter("id");
+		TeaArticle teaArticle = teaArticleService.editTeaArticle(id);
+		request.setAttribute("teaArticle", teaArticle);
+		return "/admin/tea/editTeaArticle.jsp";
+	}
 	public String findAllByAdmin(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int curNum = Integer.parseInt(request.getParameter("num"));
 		TeaParentService teaParentService = new TeaParentService();
@@ -90,7 +103,7 @@ public class TeaArticleServlet extends BaseServlet {
 			BeanUtils.populate(teaArticle, map);
 			teaArticle.setId(UUIDUtils.getId());
 			teaArticleService.add(teaArticle);
-			response.sendRedirect("");
+			response.sendRedirect("TeaArticleServlet?method=findAllByAdmin&num=1");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

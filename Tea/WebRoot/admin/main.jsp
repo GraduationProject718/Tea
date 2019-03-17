@@ -32,8 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div onclick="pageClick(this)" ><a href="${pageContext.request.contextPath}/WareServlet?method=findAllWareByAdmin&num=1" target="main"><img src="img/icon-2.png" />茶具管理</a></div>
 				<div onclick="pageClick(this)" ><a href="${pageContext.request.contextPath}/ArticleServlet?method=getList&num=1" target="main"><img src="img/icon-3.png" />文章管理</a></div>
 				<div onclick="pageClick(this)" ><a href="admin/message/message.jsp" target="main"><img src="img/icon-3.png" />留言管理</a></div>
-				<div onclick="pageClick(this)" ><a href="admin/img/img.jsp" target="main"><img src="img/icon-4.png" />图片管理</a></div>
-				<div onclick="pageClick(this)" ><a href="${pageContext.request.contextPath}/VideosServlet?method=getList&num=1" target="main"><img src="img/icon-5.png" />视频管理</a></div>
+				<div onclick="pageClick(this)" ><a href="${pageContext.request.contextPath}/VideosServlet?method=findAllByAdmin&num=1" target="main"><img src="img/icon-5.png" />视频管理</a></div>
 			</div>
 		</div>
 		<div class="top">

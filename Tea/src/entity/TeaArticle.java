@@ -7,7 +7,7 @@ public class TeaArticle {
 	private String teaChildId;
 	private String title;
 	private String content;
-	private Date date;
+	private String date;
 	private String img;
 	public String getId() {
 		return id;
@@ -33,10 +33,11 @@ public class TeaArticle {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getDate() {
+	
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getImg() {
@@ -47,7 +48,7 @@ public class TeaArticle {
 	}
 	public TeaArticle() {
 	}
-	public TeaArticle(String id, String teaChildId, String title, String content, Date date, String img) {
+	public TeaArticle(String id, String teaChildId, String title, String content, String date, String img) {
 		super();
 		this.id = id;
 		this.teaChildId = teaChildId;

@@ -13,5 +13,14 @@ public class TeaChildService {
 	public List<TeaChild> getAllTeaChild() throws Exception{
 		return teaChildDao.getAllTeaChild();
 	}
+	public void delTeaChild(String id) throws Exception{
+		teaChildDao.delTeaChild(id);
+	}
+	public TeaChild editTeaChild(String id) throws Exception{
+		return teaChildDao.editTeaChild(id);
+	}
+	public void edit(TeaChild teaChild) throws Exception{
+		teaChildDao.edit(teaChild);
+	}
 
 }

@@ -23,5 +23,16 @@ public class VideosService {
 		pm.setUrl("VideosServlet?method=findAllVideosByPage");
 		return pm;
 	}
+	public PageModel findAllByAdmin(int curNum) throws Exception{
+		int totalRecords =videosDao.findTotalRecordsByAll();
+		PageModel pm = new PageModel(curNum,totalRecords,5);
+		List<Videos> list = videosDao.findAllVideosByPage(pm.getStartIndex(),pm.getPageSize());
+		pm.setList(list);
+		pm.setUrl("VideosServlet?method=findAllByAdmin");
+		return pm;
+	}
+	public void del(String id) throws Exception{
+		videosDao.del(id);
+	}
 
 }

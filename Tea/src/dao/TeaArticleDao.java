@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
@@ -27,10 +28,22 @@ public class TeaArticleDao {
 	}
 
 	public List<TeaArticle> findAllByAdmin(int startIndex, int pageSize) throws Exception{
-		String sql = "select * from article order by date desc limit ?,?";
+		String sql = "select * from teaarticle order by date desc limit ?,?";
 		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		return qr.query(sql, new BeanListHandler<TeaArticle>(TeaArticle.class),startIndex,pageSize);
 
+	}
+
+	public void delTeaArticle(String id) throws Exception{
+		String sql = "delete from teaarticle where id=?";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		qr.update(sql,id);
+	}
+
+	public TeaArticle editTeaArticle(String id) throws Exception{
+		String sql = "select * from teaarticle where id=?";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		return qr.query(sql, new BeanHandler<TeaArticle>(TeaArticle.class),id);
 	}
 
 }

@@ -51,16 +51,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</style>
 	
 	<script type="text/javascript">
-		function delArticle(id){
+		function del(id){
 			if(confirm("是否确认删除")){
-				location="ArticleServlet?method=delArticle&id="+id;
+				location="VideosServlet?method=del&id="+id;
 			}else{
 				return false;
 			}
-		}
-		
-		function editArticle(id){
-			location="ArticleServlet?method=editArticleById&id="+id;
 		}
 	</script>
   </head>
@@ -75,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</td>
 		</tr>
 	</table>
-	<%-- <table class="layui-table">
+	<table class="layui-table">
 	  <colgroup>
 	  	<col width="50">
 	  	<col width="50">
@@ -93,21 +89,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    </tr> 
 	  </thead>
 	  <tbody>
-	    <c:forEach items="${page.list}" var="a" varStatus="status">
+	    <c:forEach items="${page.list}" var="v" varStatus="status">
 	    <tr>
 	    	<td>${status.count}</td>
-			<td><img style="width:30px;height:30px;" src="${pageContext.request.contextPath}/${a.img }"> </td>
-			<td>${a.title } </td>
-			<td>${a.date }</td>
+			<td><video style="width:250px;height:150px;" src="${pageContext.request.contextPath}/${v.url}" class="videos" controls="controls"></video></td>
+			<td>${v.name} </td>
+			<td>${v.date }</td>
 			<td>
-				<button class="layui-btn layui-btn-normal" onclick="editArticle('${a.id}');" ><i class="layui-icon">&#xe642;</i></button>
-				<button class="layui-btn layui-btn-normal" onclick="delArticle('${a.id}');" ><i class="layui-icon">&#xe640;</i></button>
+				<button class="layui-btn layui-btn-normal" onclick="del('${v.id}');" ><i class="layui-icon">&#xe640;</i></button>
 			</td>
 	    </tr>
 	    </c:forEach>
 	  </tbody>
 	</table>
-  	<jsp:include page="../pageFile.jsp"></jsp:include> --%>
+  	<jsp:include page="../pageFile.jsp"></jsp:include>
 	</div>
 	</div>
   </body>
