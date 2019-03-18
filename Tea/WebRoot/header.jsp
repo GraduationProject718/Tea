@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</a>
 			</li>
 			<li>
-				<a href="tea.jsp">
+				<a href="TeaArticleServlet?method=findAllByIndex&num=1">
 					<h2>茶叶</h2>
 					<h4>TEA</h4>
 				</a>

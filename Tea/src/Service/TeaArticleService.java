@@ -26,5 +26,16 @@ public class TeaArticleService {
 	public TeaArticle editTeaArticle(String id) throws Exception{
 		return teaArticleDao.editTeaArticle(id);
 	}
+	public PageModel findAllByIndex(int curNum) throws Exception{
+		int totalRecords =teaArticleDao.findAllTotalRecords();
+		PageModel pm = new PageModel(curNum,totalRecords,5);
+		List<TeaArticle> list = teaArticleDao.findAllByIndex(pm.getStartIndex(),pm.getPageSize());
+		pm.setList(list);
+		pm.setUrl("TeaArticleServlet?method=findAllByIndex");
+		return pm;
+	}
+	public TeaArticle findTeaArticleById(String id) throws Exception{
+		return teaArticleDao.findTeaArticleById(id);
+	}
 
 }

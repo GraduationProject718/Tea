@@ -40,6 +40,12 @@ public class TeaArticleServlet extends BaseServlet {
 		request.setAttribute("teaChild", teaChild);
 		return "/admin/tea/addTeaArticle.jsp";
 	}
+	public String findTeaArticleById(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String id = request.getParameter("id");
+		TeaArticle teaArticle = teaArticleService.findTeaArticleById(id);
+		request.setAttribute("teaArticle", teaArticle);
+		return "teaArticleView.jsp";
+	}
 	
 	public String delTeaArticle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id = request.getParameter("id");
@@ -53,6 +59,20 @@ public class TeaArticleServlet extends BaseServlet {
 		TeaArticle teaArticle = teaArticleService.editTeaArticle(id);
 		request.setAttribute("teaArticle", teaArticle);
 		return "/admin/tea/editTeaArticle.jsp";
+	}
+	public String findAllByIndex(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int curNum = Integer.parseInt(request.getParameter("num"));
+		TeaParentService teaParentService = new TeaParentService();
+		List<TeaParent> teaParent = teaParentService.getAllTeaParent();
+		request.setAttribute("teaParent", teaParent);
+		
+		TeaChildService teaChildService = new TeaChildService();
+		List<TeaChild> teaChild = teaChildService.getAllTeaChild();
+		request.setAttribute("teaChild", teaChild);
+		
+		PageModel pm = teaArticleService.findAllByIndex(curNum);
+		request.setAttribute("page", pm);
+		return "tea.jsp";
 	}
 	public String findAllByAdmin(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int curNum = Integer.parseInt(request.getParameter("num"));

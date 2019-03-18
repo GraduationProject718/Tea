@@ -46,4 +46,16 @@ public class TeaArticleDao {
 		return qr.query(sql, new BeanHandler<TeaArticle>(TeaArticle.class),id);
 	}
 
+	public List<TeaArticle> findAllByIndex(int startIndex, int pageSize) throws Exception{
+		String sql = "select * from teaarticle order by date desc limit ?,?";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		return qr.query(sql, new BeanListHandler<TeaArticle>(TeaArticle.class),startIndex,pageSize);
+	}
+
+	public TeaArticle findTeaArticleById(String id) throws Exception{
+		String sql = "select * from teaarticle where id=?";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		return qr.query(sql, new BeanHandler<TeaArticle>(TeaArticle.class),id);
+	}
+
 }
