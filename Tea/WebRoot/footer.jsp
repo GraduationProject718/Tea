@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <footer class="footer">
 	<table class="max" border="0" cellspacing="" cellpadding="">
 		<tr>
-			<td class="td1">
+			<!-- <td class="td1">
 				<table border="0" cellspacing="" cellpadding="">
 					<tr>
 						<td><img src="img/icon/footer.png" /></td>
@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input type="submit" class="btn" value="提交" formnovalidate="formnovalidate" />
 					</div>
 				</form>
-			</td>
+			</td> -->
 			<td class="td2">
 				<table class="table1" border="0" cellspacing="" cellpadding="">
 					<tr>

@@ -46,7 +46,13 @@ public class TeaArticleServlet extends BaseServlet {
 		request.setAttribute("teaArticle", teaArticle);
 		return "teaArticleView.jsp";
 	}
-	
+	public String findPartByIndex(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		List<TeaArticle> indexTeaArticle = teaArticleService.findPartByIndex();
+		request.getSession().setAttribute("indexTeaArticle", indexTeaArticle);
+		response.sendRedirect("index.jsp");
+		return null;
+		
+	}
 	public String delTeaArticle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id = request.getParameter("id");
 		teaArticleService.delTeaArticle(id);

@@ -58,4 +58,10 @@ public class TeaArticleDao {
 		return qr.query(sql, new BeanHandler<TeaArticle>(TeaArticle.class),id);
 	}
 
+	public List<TeaArticle> findPartByIndex() throws Exception{
+		String sql = "select * from teaarticle order by date limit 0,6";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		return qr.query(sql, new BeanListHandler<TeaArticle>(TeaArticle.class));
+	}
+
 }

@@ -58,4 +58,10 @@ public class WareDao {
 		qr.update(sql,ware.getName(),ware.getId());
 	}
 
+	public List<Ware> findPartByIndex() throws Exception{
+		String sql = "select * from ware order by date limit 0,6";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		return qr.query(sql, new BeanListHandler<Ware>(Ware.class));
+	}
+
 }

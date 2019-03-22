@@ -37,4 +37,7 @@ public class WareService {
 	public void editOK(Ware ware) throws Exception{
 		wareDao.editOK(ware);
 	}
+	public List<Ware> findPartByIndex() throws Exception{
+		return wareDao.findPartByIndex();
+	}
 }

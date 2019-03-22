@@ -37,5 +37,8 @@ public class TeaArticleService {
 	public TeaArticle findTeaArticleById(String id) throws Exception{
 		return teaArticleDao.findTeaArticleById(id);
 	}
+	public List<TeaArticle> findPartByIndex() throws Exception{
+		return teaArticleDao.findPartByIndex();
+	}
 
 }

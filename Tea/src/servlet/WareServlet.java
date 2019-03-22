@@ -35,7 +35,12 @@ public class WareServlet extends BaseServlet {
 		response.sendRedirect("WareServlet?method=findAllWareByAdmin&num=1");
 		return null;
 	}
-	
+	public String findPartByIndex(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		List<Ware> indexWare = wareService.findPartByIndex();
+		request.getSession().setAttribute("indexWare", indexWare);
+		response.sendRedirect("index.jsp");
+		return null;
+	}
 	public String edit(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id = request.getParameter("id");
 		Ware ware = wareService.getWareById(id);
