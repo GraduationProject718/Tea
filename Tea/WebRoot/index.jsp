@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       </div>
                       <div class="bd">
                           <ul>
-                          <c:forEach items="${indexTeaArticle}" var="ita">
+                          <c:forEach items="${indexTeaArticle}" var="ita" >
                              <li>
                                 <a href="TeaArticleServlet?method=findTeaArticleById&id=${ita.id }"><img style="height:350px;width:100%;" src="${pageContext.request.contextPath}/${ita.img }" alt="">
                                  <div class="home-banner-text">

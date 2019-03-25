@@ -32,32 +32,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <span>注册</span>
                    <a href="login.jsp">去登录</a>
                </div>
-               <form autocomplete="off">
+               <form autocomplete="off" method="post" action="UserServlet?method=register">
                    <div class="default">
                        <p>用户名由3~10个数字和英文字符组成</p>
-                       <input id="uname" name="uname" data-form="uname" type="text" />
-                       <label for="uname">用户名</label>
+                       	<input id="account" name="account" data-form="uname" type="text" placeholder="用户名"/>
                    </div>
                    <div class="default">
                        <p>密码由8~10个数字和英文字符组成</p>
-                       <input id="upwd" name="upwd" data-form="upwd" type="password"/>
-                       <label for="upwd">密码</label>
+                       <input id="password" name="password" data-form="upwd" type="password" placeholder="密码" />
                    </div>
                    <div class="default">
                        <p>请确认两次输入密码一致</p>
-                       <input id="upwd_2" data-form="upwd_2" type="password"/>
-                       <label for="upwd_2">确认密码</label>
+                       <input id="password_2" data-form="password_2" type="password" placeholder="确认密码" />
+                   </div>
+                   <div class="default">
+                       <p>请输入昵称</p>
+                       <input id="name" name="name" data-form="phone" type="text" placeholder="昵称"  />
                    </div>
                    <div class="default">
                        <p>请输入中国大陆手机号码</p>
-                       <input id="phone" name="phone" data-form="phone" type="text"/>
-                       <label for="phone">手机</label>
+                       <input id="phone" name="phone" data-form="phone" type="text" placeholder="手机" />   
                    </div>
                    <div class="submit">
                        <span class="notice">点击"注册"代表您同意遵守
-                           <a href="#">用户协议</a>
-                           和
-                           <a href="#">隐私条款</a>
+                           <a href="#">用户协议</a>和<a href="#">隐私条款</a>
                        </span>
                        <button class="s_hover" data-form="submit">注册</button>
                    </div>

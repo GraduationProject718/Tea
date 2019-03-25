@@ -32,16 +32,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <span>登录</span>
                 <a href="register.jsp">去注册</a>
             </div>
-            <form autocomplete="off">
+            <form autocomplete="off" method="post" action="UserServlet?method=login">
                 <div class="default">
                     <p>请输入用户名或手机号码</p>
-                    <input id="uname" name="uname" data-form="uname" type="text" />
-                    <label for="uname">用户名/手机</label>
+                    <input id="account" name="account" data-form="uname" type="text" placeholder="账号" />
                 </div>
                 <div class="default">
                     <p>请输入账号密码</p>
-                    <input id="upwd" name="upwd" data-form="upwd" type="password"/>
-                    <label for="upwd">密码</label>
+                    <input id="password" name="password" data-form="upwd" type="password" placeholder="密码"/>
                 </div>
                 <div class="submit">
                         <span class="notice">
