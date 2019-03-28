@@ -1,6 +1,10 @@
 package Service;
 
+import java.util.List;
+
 import dao.UserDao;
+import entity.LiuYan;
+import entity.PageModel;
 import entity.User;
 
 public class UserService {
@@ -24,6 +28,17 @@ public class UserService {
 	}
 	public void userImg(User user)  throws Exception{
 		userDao.userImg(user);
+	}
+	public PageModel findAllByAdmin(int curNum) throws Exception{
+		int totalRecords =userDao.findTotalRecords();
+		PageModel pm = new PageModel(curNum,totalRecords,8);
+		List<User> list = userDao.findAllByAdmin(pm.getStartIndex(),pm.getPageSize());
+		pm.setList(list);
+		pm.setUrl("UserServlet?method=findAllByAdmin");
+		return pm;
+	}
+	public void del(String id)  throws Exception{
+		userDao.del(id);
 	}
 
 }

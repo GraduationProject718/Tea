@@ -5,7 +5,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <link rel="stylesheet" type="text/css" href="css/pcreset.css" />
 <link rel="stylesheet" type="text/css" href="css/pcless.css" />
-
+<script type="text/javascript">
+function check(){
+	var id=$("#id").val();
+	if(id=="" || id==null){
+		alert("请登录后再留言！");
+		location="login.jsp";
+		return false;
+	}
+	return true;
+	
+}
+</script>
   <footer class="footer">
 	<table class="max" border="0" cellspacing="" cellpadding="">
 		<tr>
@@ -14,17 +25,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<tr>
 						<td><img src="img/icon/footer.png" /></td>
 						<td>
-							<span class="liuyan">在线留言</span> online message
+							<span class="liuyan"><a href="LiuYanServlet?method=findAllByIndex&num=1">在线留言</a></span> online message
 						</td>
 					</tr>
 				</table>
-				<form action="servlet/MessageServlet?flag=addMessage" method="post">
-					<p><input type="text"  placeholder="您的姓名..." /></p>
-					<p><input type="tel"  placeholder="您的电话..." /></p>
-					<p><input type="email"  placeholder="您的邮箱..." /></p>
+				<form action="LiuYanServlet?method=add" method="post" onclick="return check();" >
 					<div class="bot clearfix">
 						<textarea name="content" rows="" cols=""></textarea>
 						<input type="submit" class="btn" value="提交" formnovalidate="formnovalidate" />
+						<input type="hidden" name="id" id="id" value="${user.id }" /> 
 					</div>
 				</form>
 			</td>

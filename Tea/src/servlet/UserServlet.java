@@ -19,6 +19,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
 
 import Service.UserService;
+import entity.PageModel;
 import entity.User;
 import utils.UUIDUtils;
 import utils.UploadUtils;
@@ -106,6 +107,19 @@ public class UserServlet extends BaseServlet {
 		request.getSession().invalidate();
 		response.sendRedirect("index.jsp");
 		return null;
+	}
+	public String del(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String id = request.getParameter("id");
+		userService.del(id);
+		response.sendRedirect("UserServlet?method=findAllByAdmin&num=1");
+		return null;
+	}
+	
+	public String findAllByAdmin(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int curNum = Integer.parseInt(request.getParameter("num"));
+		PageModel pm = userService.findAllByAdmin(curNum);
+		request.setAttribute("page", pm);
+		return "/admin/user/userList.jsp";
 	}
 	
 	public String login(HttpServletRequest request, HttpServletResponse response) throws Exception {

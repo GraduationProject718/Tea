@@ -421,7 +421,7 @@ a:hover {
 	width: 250px;
 	height: 77px;
 	border: 1px solid #ceab62;
-	background: none;
+	background: white;
 	outline: none;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;

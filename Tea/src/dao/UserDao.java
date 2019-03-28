@@ -1,8 +1,13 @@
 package dao;
 
+import java.util.List;
+
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
+import entity.LiuYan;
 import entity.User;
 import utils.JDBCUtils;
 
@@ -46,6 +51,25 @@ public class UserDao {
 		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		Object[] params = {user.getImg(),user.getId()};
 		qr.update(sql,params);
+	}
+
+	public int findTotalRecords() throws Exception{
+		String sql = "select count(*) from liuyan";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		Long num = (Long)qr.query(sql, new ScalarHandler());
+		return num.intValue();
+	}
+
+	public List<User> findAllByAdmin(int startIndex, int pageSize) throws Exception{
+		String sql = "select * from user order by date desc limit ?,?";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		return qr.query(sql, new BeanListHandler<User>(User.class),startIndex,pageSize);
+	}
+
+	public void del(String id) throws Exception{
+		String sql = "delete from user where id=?";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		qr.update(sql,id);
 	}
 
 }
