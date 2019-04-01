@@ -33,7 +33,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<center><img style="width:80%;" src="img/banner.jpg"></center>
+	<center>
+	<img style="width:80%;" src="img/banner.jpg">
+	<br /><br />
+	<h1 style="font-size:30px;">留言板</h1>
+	<br /><br />
+	<table style="width:80%;font-size:25px;">
 	<c:forEach items="${page.list}" var="ly" varStatus="status">
 		<%-- <div class="divcss5"> 
 		    <a href=""><img src="${pageContext.request.contextPath}/" /></a> 
@@ -42,8 +47,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        <div> ${a.content } <span>...<a href="ArticleServlet?method=findArticleById&id=${a.id }">[详细]</a></span></div> 
 		    </div> 
 		</div>  --%>
-		${ly.content }${ly.date }<br /><br />
+		<tr>
+			<td>
+				${ly.content }
+			</td>
+			<td>
+				${ly.date }
+			</td>
+		</tr>
 	</c:forEach>
+	</table>
+	</center>
 	<jsp:include page="pageFile.jsp"></jsp:include>
 	<jsp:include page="footer.jsp"></jsp:include>
 	
