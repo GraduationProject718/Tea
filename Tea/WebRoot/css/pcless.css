@@ -216,7 +216,7 @@ a:hover {
 
 .header {
 	z-index: 2;
-	height: 123px;
+	height: 60px;
 	background: #000;
 	position: relative;
 }
@@ -230,12 +230,11 @@ a:hover {
 }
 
 .header .nav ul li {
-	height: 108px;
-	margin: 0 60px;
+	height: 60px;
+	margin: 0 40px;
 	width: 50px;
 	display: inline-block;
 	width: 50px;
-	height: 108px;
 	color: #ceab62;
 	display: inline-block;
 	float: left;
@@ -243,11 +242,9 @@ a:hover {
 }
 
 .header .nav ul li h2 {
-	font-size: 15px;
 	display: inline-block;
 	float: left;
-	width: 15px;
-	margin: 0 10px 0 15px;
+	width: 120px;
 	font-size:20px;
 }
 

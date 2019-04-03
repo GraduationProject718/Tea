@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <jsp:include page="header.jsp"></jsp:include>
  	<div class="p_news clearfix">
  	
- 	 <div class="home-banner">
+ 	 <%-- <div class="home-banner">
       <div class="home-banner-box">
           <div class="home-banner-head">
               <h2>茶叶资讯</h2>
@@ -97,7 +97,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               autoPlay: false,
               delayTime: 700
           });
-      </script>
+      </script> --%>
+ 	
+ 	<div class="i_tit2 max">
+		<h2><a href="TeaArticleServlet?method=findAllByIndex&num=1">茶文化</a></h2>
+		<span>NEWS  CENTER</span>
+		<p>家族传承，古法炮制！传承创新，新鲜感觉！</p>
+		<hr />
+		<ul class="news_tab max clearfix" id="teaarticle_tab">
+			<div class="bd">
+				<ul>
+					<c:forEach items="${indexTeaArticle}" var="ita" varStatus="status">
+					
+					<li style="width:1200px;">
+						<a href="TeaArticleServlet?method=findTeaArticleById&id=${ita.id }">
+							<div style="width:1200px; height:500px;" >
+								<img style="height:100%;width:100%;" src="${pageContext.request.contextPath}/${ita.img }" alt="">
+							</div>
+							<h3>${ita.title}</h3>
+							<div style="height:30px;">${ita.content }</div>
+						</a>
+					</li>
+					
+					</c:forEach>
+				</ul>
+			</div>
+			<div class="hd">
+				<a class="prev"><img src="img/icon/left1.png" /></a>
+				<ul><li></li><li></li><li></li><li></li><li></li></ul>
+				<a class="next"><img src="img/icon/right1.png" /></a>
+			</div>
+		</ul>
+	</div>
+ 	
  	
   	<div class="i_tit2 max">
 		<h2><a href="ArticleServlet?method=findArticleByTypeId&typeId=4&num=1">最新资讯</a></h2>
@@ -122,19 +154,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="hd">
 				<a class="prev"><img src="img/icon/left1.png" /></a>
-				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-				</ul>
+				<ul><li></li><li></li><li></li><li></li><li></li></ul>
 				<a class="next"><img src="img/icon/right1.png" /></a>
 			</div>
 		</ul>
 	</div>
 		
-		<div class="i_tit2 max">
+		<%-- <div class="i_tit2 max">
 			<h2><a href="VideosServlet?method=findAllVideosByPage&num=1">视频展示</a></h2>
 			<span>NEWS  CENTER</span>
 			<p>家族传承，古法炮制！传承创新，新鲜感觉！</p>
@@ -164,7 +190,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<a class="next"><img src="img/icon/right1.png" /></a>
 				</div>
 		</ul>
-		</div>
+		</div> --%>
 		
 	</div>
 	<script type="text/javascript">
@@ -178,7 +204,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			trigger: "click"
 		});
 		
-		jQuery("#video_tab").slide({
+		jQuery("#teaarticle_tab").slide({
 			titCell: ".hd ul",
 			mainCell: ".bd ul",
 			autoPage: true,
