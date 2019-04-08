@@ -1022,19 +1022,21 @@ a:hover {
 	padding-bottom: 7px;
 	font-weight: bold;
 	clear: both;
-	text-align: center;
+	
 	color: #000;
-	background: url(../img/i_tit.png) no-repeat center top;
+	background: url(../img/i_tit.png) no-repeat left top;
 }
 
 .i_tit2 h2 {
 	font-weight: bold;
 	font-size: 26px;
 	padding: 10px 0;
+	margin-left:60px;
 }
 
 .i_tit2 span {
 	display: block;
+	margin-left:50px;
 }
 
 .i_tit2 p {

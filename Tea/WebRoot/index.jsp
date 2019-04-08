@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	<div class="i_tit2 max">
 		<h2><a href="TeaArticleServlet?method=findAllByIndex&num=1">茶文化</a></h2>
 		<span>NEWS  CENTER</span>
-		<p>家族传承，古法炮制！传承创新，新鲜感觉！</p>
+		
 		<hr />
 		<ul class="news_tab max clearfix" id="teaarticle_tab">
 			<div class="bd">
@@ -134,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<div class="i_tit2 max">
 		<h2><a href="ArticleServlet?method=findArticleByTypeId&typeId=4&num=1">最新资讯</a></h2>
 		<span>NEWS  CENTER</span>
-		<p>家族传承，古法炮制！传承创新，新鲜感觉！</p>
+		
 		<hr />
 		<ul class="news_tab max clearfix" id="news_tab">
 			<div class="bd">
