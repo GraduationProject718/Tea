@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<div id="main">
     <div class="container">
-        <div class="bgPic"><img src="img/register/b3_1.jpg" alt=""/></div>
+        <div class="bgPic"><img style="height:100%;width:100%;" src="img/register/b3_1.jpg" alt=""/>
         <div class="register">
             <div class="title">
                 <span>登录</span>
@@ -70,6 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>
 	
