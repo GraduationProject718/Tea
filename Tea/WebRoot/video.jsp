@@ -23,7 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			margin:0 auto;
 			text-align: center;
 		}
-		
+		.videos{
+			width:380px;height:250px;margin-top:10px;margin-right:20px;
+		}
 	</style>
   </head>
   
@@ -33,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<tr>
 	<c:forEach items="${page.list}" var="v" varStatus="status">
 		<td>
-			<div style="padding-right:15px;padding-top:5px;">
+			<div style="padding-right:10px;padding-top:5px;">
 		    <video src="${pageContext.request.contextPath}/${v.url}" class="videos" controls="controls"></video> 
 		        <h1>${v.name }</h1> 
 		       ${v.information }
