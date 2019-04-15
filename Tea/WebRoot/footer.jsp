@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<link rel="stylesheet" type="text/css" href="css/pcreset.css" />
+<%-- <link rel="stylesheet" type="text/css" href="css/pcreset.css" />
 <link rel="stylesheet" type="text/css" href="css/pcless.css" />
 <script type="text/javascript">
 function check(){
@@ -74,4 +74,7 @@ function check(){
 			</td>
 		</tr>
 	</table>
+</footer> --%>
+<footer style="height:60px; background-color: black;color:white;text-align: center;line-height: 10px;padding-top:20px;">
+	<p>@2019  版权所有：计本1501杨涛 学号：201508110046</p>  
 </footer>

@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="thisUser">当前用户：${admin.account}</div>
 		</div>
 		<div class="content">
-			<iframe src="admin/user/user.jsp" style="width:99%;height:85%;" name="main"></iframe>
+			<iframe src="${pageContext.request.contextPath}/UserServlet?method=findAllByAdmin&num=1" style="width:99%;height:85%;" name="main"></iframe>
 		</div>
   </body>
 </html>

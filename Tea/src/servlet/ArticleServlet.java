@@ -44,6 +44,15 @@ public class ArticleServlet extends BaseServlet {
 		request.setAttribute("page", pm);
 		return "article.jsp";
 	}
+	
+	public String findArticleByNews(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int curNum = Integer.parseInt(request.getParameter("num"));
+		String typeId = request.getParameter("typeId");
+		PageModel pm = articleService.findArticleByNews(curNum,typeId);
+		request.setAttribute("page", pm);
+		return "news.jsp";
+	}
+	
 	public String findArticleById(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id = request.getParameter("id");
 		Article article = articleService.findArticleById(id);

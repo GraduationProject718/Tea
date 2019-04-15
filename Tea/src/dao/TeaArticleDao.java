@@ -52,6 +52,7 @@ public class TeaArticleDao {
 		return qr.query(sql, new BeanListHandler<TeaArticle>(TeaArticle.class),startIndex,pageSize);
 	}
 
+	
 	public TeaArticle findTeaArticleById(String id) throws Exception{
 		String sql = "select * from teaarticle where id=?";
 		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
@@ -59,9 +60,22 @@ public class TeaArticleDao {
 	}
 
 	public List<TeaArticle> findPartByIndex() throws Exception{
-		String sql = "select * from teaarticle order by date limit 0,6";
+		String sql = "select * from teaarticle order by date desc limit 0,6";
 		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
 		return qr.query(sql, new BeanListHandler<TeaArticle>(TeaArticle.class));
+	}
+
+	public int findChildIdTotalRecords(String childId) throws Exception{
+		String sql = "select count(*) from teaarticle where teaChildId=?";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		Long num = (Long)qr.query(sql, new ScalarHandler(),childId);
+		return num.intValue();
+	}
+
+	public List<TeaArticle> findByChildId(String childId, int startIndex, int pageSize)  throws Exception{
+		String sql = "select * from teaarticle where teaChildId=? order by date desc limit 0,6";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		return qr.query(sql, new BeanListHandler<TeaArticle>(TeaArticle.class),childId);
 	}
 
 }

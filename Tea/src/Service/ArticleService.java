@@ -46,5 +46,16 @@ public class ArticleService {
 	public List<Article> getIndexArticle()throws Exception {
 		return articleDao.getIndexArticle();
 	}
+	public List<Article> findArticleByTypeId(String i) throws Exception{
+		return articleDao.findArticleByTypeId(i);
+	}
+	public PageModel findArticleByNews(int curNum, String typeId) throws Exception{
+		int totalRecords =articleDao.findTotalRecords(typeId);
+		PageModel pm = new PageModel(curNum,totalRecords,10);
+		List<Article> list = articleDao.findArticleByTypeId(pm.getStartIndex(),pm.getPageSize(),typeId);
+		pm.setList(list);
+		pm.setUrl("ArticleServlet?method=findArticleByNews&typeId="+typeId);
+		return pm;
+	}
 
 }

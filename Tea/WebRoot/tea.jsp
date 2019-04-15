@@ -17,43 +17,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	
 	<style type="text/css">
-		.divcss5{ margin:10 auto; width:80%; overflow:hidden;border:2px solid;} 
-		.divcss5 img{ float:left; width:300px; height:300px;border:2px solid;} 
-		.divcss5 .content{width:auto; text-align:left} 
-		.divcss5 .content h1{ height:26px; line-height:10px;font-family:"Microsoft YaHei";  
-		font-size:16px; overflow:hidden;padding:20px;} 
-		.divcss5 .content div{ padding-top:5px; height:80px;overflow:hidden;padding:20px;} 
-		.divcss5 .content div span{color:#353535} 
+		.tea{
+			margin-top:20px;
+			font-size:25px;
+		}
+		.tea tr{
+			padding-top:10px;
+			height:50px;
+		}
+		.tea_name{
+			width:300px;
+			padding-left:10px;
+			font-size:18px;
+			color:black;
+		}
 	</style>
-
   </head>
   
   <body>
   <jsp:include page="header.jsp"></jsp:include>
-	<div style="width:80%;margin:0 auto;">
-	<c:forEach items="${teaParent}" var="tp" >
-  	<div style="margin:20px;"><b>${tp.name}</b>
-  	<c:forEach items="${teaChild}" var="tc">
-  		<c:if test="${tp.id == tc.parentId }">
-			${tc.name }
-		</c:if>
-	</c:forEach>
-	</div>
-	</c:forEach>
+  
+	<div style="width:1200px;margin:0 auto;font-size: 25px;">
+		<table class="tea">
+		<c:forEach items="${teaParent}" var="tp" >
+			<tr><td><b>${tp.name}</b></td></tr>
+			<tr>
+			  	<c:forEach items="${teaChild}" var="tc">
+			  		<c:if test="${tp.id == tc.parentId }">
+						<td class="tea_name"><a href="TeaArticleServlet?method=findByChildId&num=1&childId=${tc.id }">${tc.name }</a></td>
+					</c:if>
+				</c:forEach>
+			</tr>
+		</c:forEach>
+		</table>
  	</div>
- 	
- 	
-   	<c:forEach items="${page.list}" var="a" varStatus="status">
-		<div class="divcss5"> 
-		    <a href="TeaArticleServlet?method=findTeaArticleById&id=${a.id }"><img src="${pageContext.request.contextPath}/${a.img }" /></a> 
-		    <div class="content"> 
-		        <h1><a href="TeaArticleServlet?method=findTeaArticleById&id=${a.id }"><i class="layui-icon layui-icon-read" style="font-size: 30px; color: #0D2739;"></i> ${a.title }</a></h1> 
-		        <div> ${a.content } <span>...<a href="TeaArticleServlet?method=findTeaArticleById&id=${a.id }">[详细]</a></span></div> 
-		    </div> 
-		</div> 
-	</c:forEach>
-    <jsp:include page="pageFile.jsp"></jsp:include>
   <jsp:include page="footer.jsp"></jsp:include>
   </body>
 </html>

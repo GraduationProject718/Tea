@@ -10,15 +10,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>中国茶文化网</title>
+    <title>My JSP 'teaArticle.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<link rel="stylesheet" href="layui/css/layui.css">
-	
 	<style type="text/css">
 		.divcss5{ margin:10 auto; width:80%; overflow:hidden;border:2px solid;} 
 		.divcss5 img{ float:left; width:300px; height:300px;border:2px solid;} 
@@ -32,19 +30,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	<jsp:include page="header.jsp"></jsp:include>
-	<center><img style="width:80%;" src="img/banner.jpg"></center>
-	<c:forEach items="${page.list}" var="a" varStatus="status">
-		<div class="divcss5">
-		    <a href="ArticleServlet?method=findArticleById&id=${a.id }"><img src="${pageContext.request.contextPath}/${a.img }" /></a> 
-		    <div class="content">
-		        <h1><a href="ArticleServlet?method=findArticleById&id=${a.id }"><i class="layui-icon layui-icon-read" style="font-size: 30px; color: #0D2739;"></i> ${a.title }</a></h1> 
-		        <div> ${a.content } <span>...<a href="ArticleServlet?method=findArticleById&id=${a.id }">[详细]</a></span></div> 
+    <jsp:include page="header.jsp"></jsp:include>
+    <c:forEach items="${page.list}" var="a" varStatus="status">
+		<div class="divcss5"> 
+		    <a href="TeaArticleServlet?method=findTeaArticleById&id=${a.id }"><img src="${pageContext.request.contextPath}/${a.img }" /></a> 
+		    <div class="content"> 
+		        <h1><a href="TeaArticleServlet?method=findTeaArticleById&id=${a.id }"><i class="layui-icon layui-icon-read" style="font-size: 30px; color: #0D2739;"></i> ${a.title }</a></h1> 
+		        <div> ${a.content } <span>...<a href="TeaArticleServlet?method=findTeaArticleById&id=${a.id }">[详细]</a></span></div> 
 		    </div> 
 		</div> 
 	</c:forEach>
-	<jsp:include page="pageFile.jsp"></jsp:include>
-	<jsp:include page="footer.jsp"></jsp:include>
-	
+    <jsp:include page="pageFile.jsp"></jsp:include>
+     <jsp:include page="footer.jsp"></jsp:include>
   </body>
 </html>

@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  	<col width="50">
 	    <col>
 	    <col width="100">
-	    <col width="150">
+	    <col width="200">
 	  </colgroup>
 	  <thead>
 	    <tr>
@@ -88,7 +88,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<td>${ly.content } </td>
 			<td>${ly.date }</td>
 			<td>
+				<button class="layui-btn layui-btn-normal"  id="button1" onclick="show1()" >回复</button>
 				<button class="layui-btn layui-btn-normal" onclick="del('${ly.id}');" ><i class="layui-icon">&#xe640;</i></button>
+				<div style="display:none;position: absolute;left:-1200px;top:350px;" id="div1">
+					<hr />
+					<form action="">
+						<input type="hidden" name="id" value="${ly.id }">
+						<h3>请输入回复内容：</h3>
+						<textarea rows="10" cols="150"></textarea><br>
+						<button type="submit" style="width:80px;height:30px;float:right;margin-top:20px;">确定</button>
+					</form>
+				</div>
 			</td>
 	    </tr>
 	    </c:forEach>
@@ -97,5 +107,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<jsp:include page="../pageFile.jsp"></jsp:include>
 	</div>
 	</div>
+	
+	
+	<script>
+		function show1(){
+			document.getElementById("div1").style.display="block";
+		};
+	</script>
+	
   </body>
 </html>

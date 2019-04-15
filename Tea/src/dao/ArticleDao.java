@@ -81,4 +81,10 @@ public class ArticleDao {
 		return qr.query(sql, new BeanListHandler<Article>(Article.class));
 	}
 
+	public List<Article> findArticleByTypeId(String i) throws Exception{
+		String sql = "select * from article where typeId=? order by date desc limit 0,10";
+		QueryRunner qr = new QueryRunner(JDBCUtils.getDataSource());
+		return qr.query(sql, new BeanListHandler<Article>(Article.class),i);
+	}
+
 }
