@@ -30,9 +30,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.table_hidden { table-layout: fixed;height:400px;}
 		.tr_hidden{
 			height:100px;
+			
 		}
 		.td_hidden{
-			
+			margin:0px;
+			padding:0px;
 			width:700px;
 			height:100px;
 		    overflow:hidden;
@@ -104,17 +106,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</script>
 				
 				</div>
-				<div style="float:right;width:700px;height:400px;">
+				<div style="float:right;width:700px;height:100px;">
 				<table class="table_hidden">
 					<c:forEach items="${indexTeaArticle}" var="ita" varStatus="status">
-					<c:if test="${status.count < 4 }" >
-						<tr>
-							<td><a href="TeaArticleServlet?method=findTeaArticleById&id=${ita.id }"><h3><b>${ita.title}</b></h3></a></td>
+						<tr style="width:700px;">
+							<td style="width:600px;"> <a href="TeaArticleServlet?method=findTeaArticleById&id=${ita.id }"><h3><b>${ita.title}</b><span style="float:right;">${ita.date}</span></h3></a></td>
 						</tr>
-						<tr class="tr_hidden">
+						<%-- <tr class="tr_hidden">
 							<td class="td_hidden">${ita.content}</td>
-						</tr>
-					</c:if>
+						</tr> --%>
+					
 					</c:forEach>
 				</table>
 				</div>
