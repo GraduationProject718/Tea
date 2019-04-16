@@ -40,13 +40,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<br /><br />
 	<table style="width:80%;font-size:25px;">
 	<c:forEach items="${page.list}" var="ly" varStatus="status">
-		<%-- <div class="divcss5"> 
-		    <a href=""><img src="${pageContext.request.contextPath}/" /></a> 
-		    <div class="content"> 
-		        <h1><a href=""><i class="layui-icon layui-icon-read" style="font-size: 30px; color: #0D2739;"></i> ${a.title }</a></h1> 
-		        <div> ${a.content } <span>...<a href="ArticleServlet?method=findArticleById&id=${a.id }">[详细]</a></span></div> 
-		    </div> 
-		</div>  --%>
 		<tr>
 			<td>
 				${ly.content }

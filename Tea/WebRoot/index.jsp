@@ -109,7 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div style="float:right;width:700px;height:100px;">
 				<table class="table_hidden">
 					<c:forEach items="${indexTeaArticle}" var="ita" varStatus="status">
-						<tr style="width:700px;">
+						<tr>
 							<td style="width:600px;"> <a href="TeaArticleServlet?method=findTeaArticleById&id=${ita.id }"><h3><b>${ita.title}</b><span style="float:right;">${ita.date}</span></h3></a></td>
 						</tr>
 						<%-- <tr class="tr_hidden">
